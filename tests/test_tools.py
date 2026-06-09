@@ -63,3 +63,25 @@ def test_get_outstation_unknown_club_omits_rules():
     out = get_outstation(store, name=store.outstations[0].name)
     assert out["found"] is True
     assert out["club_rules"] is None
+
+
+from outstations_mcp.tools import rank_outstations
+
+
+def test_rank_outstations_ranks_only_comfort_bearing():
+    # SW wind; Near Cove is fully protected (exposed_sectors []), so it scores calm.
+    forecast = [{"time": "t", "wind_from_deg": 225, "wind_kn": 20.0,
+                 "swell_from_deg": None, "swell_m": None}]
+    out = rank_outstations(_store(), names=["Near Cove", "Dock Only"], forecast=forecast)
+    ranked_names = [r["name"] for r in out["ranked"]]
+    assert ranked_names == ["Near Cove"]
+    assert out["ranked"][0]["score"] == 0.0
+    not_ranked = {r["name"]: r["reason"] for r in out["not_ranked"]}
+    assert "Dock Only" in not_ranked
+    assert "dock" in not_ranked["Dock Only"].lower()
+
+
+def test_rank_outstations_reports_unknown():
+    out = rank_outstations(_store(), names=["Ghost Station"], forecast=[])
+    assert out["unknown"] == ["Ghost Station"]
+    assert out["ranked"] == []

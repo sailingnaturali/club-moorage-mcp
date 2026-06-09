@@ -4,6 +4,9 @@ from __future__ import annotations
 
 from dataclasses import asdict
 
+from pilotbook_mcp.models import Anchorage
+from pilotbook_mcp.scoring import rank_anchorages as _rank_anchorages
+
 from outstations_mcp.geo import within_radius
 from outstations_mcp.store import Store
 
@@ -76,3 +79,29 @@ def get_outstation(store: Store, name: str) -> dict:
             "rules": club.prose,
         }
     return {"found": True, "outstation": record, "club_rules": club_rules}
+
+
+_NOT_RANKED_REASON = "dock moorage — not an anchoring/comfort decision"
+
+
+def rank_outstations(store: Store, names: list[str], forecast: list[dict]) -> dict:
+    rankable: list[Anchorage] = []
+    not_ranked: list[dict] = []
+    unknown: list[str] = []
+    for n in names:
+        o = store.get(n)
+        if o is None:
+            unknown.append(n)
+        elif o.holding is None:           # carries no comfort fields → not an overnight-comfort call
+            not_ranked.append({"name": o.name, "reason": _NOT_RANKED_REASON})
+        else:
+            rankable.append(
+                Anchorage(
+                    name=o.name,
+                    source=o.club,
+                    exposed_sectors=o.exposed_sectors,
+                    holding=o.holding,
+                )
+            )
+    ranked = _rank_anchorages(rankable, forecast) if rankable else []
+    return {"ranked": ranked, "not_ranked": not_ranked, "unknown": unknown}
