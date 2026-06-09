@@ -85,3 +85,13 @@ def test_rank_outstations_reports_unknown():
     out = rank_outstations(_store(), names=["Ghost Station"], forecast=[])
     assert out["unknown"] == ["Ghost Station"]
     assert out["ranked"] == []
+
+
+def test_rank_outstations_reason_reflects_anchoring_capability():
+    # Real bundled data: Friday Harbor can anchor (moorage includes "anchoring") but
+    # has no comfort fields, so its not_ranked reason must NOT call it dock moorage.
+    real = Store.load()
+    out = rank_outstations(real, names=["Friday Harbor", "Telegraph Harbour"], forecast=[])
+    reasons = {r["name"]: r["reason"] for r in out["not_ranked"]}
+    assert "dock" not in reasons["Friday Harbor"].lower()      # it can anchor
+    assert "dock" in reasons["Telegraph Harbour"].lower()      # truly dock-only

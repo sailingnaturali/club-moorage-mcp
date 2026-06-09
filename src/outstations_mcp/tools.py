@@ -8,6 +8,7 @@ from pilotbook_mcp.models import Anchorage
 from pilotbook_mcp.scoring import rank_anchorages as _rank_anchorages
 
 from outstations_mcp.geo import within_radius
+from outstations_mcp.models import Outstation
 from outstations_mcp.store import Store
 
 
@@ -81,7 +82,10 @@ def get_outstation(store: Store, name: str) -> dict:
     return {"found": True, "outstation": record, "club_rules": club_rules}
 
 
-_NOT_RANKED_REASON = "dock moorage — not an anchoring/comfort decision"
+def _not_ranked_reason(o: Outstation) -> str:
+    if "anchoring" in o.moorage or "mooring_buoys" in o.moorage:
+        return "no overnight-comfort assessment authored for this station"
+    return "dock moorage — not an anchoring/comfort decision"
 
 
 def rank_outstations(store: Store, names: list[str], forecast: list[dict]) -> dict:
@@ -93,7 +97,7 @@ def rank_outstations(store: Store, names: list[str], forecast: list[dict]) -> di
         if o is None:
             unknown.append(n)
         elif o.holding is None:           # carries no comfort fields → not an overnight-comfort call
-            not_ranked.append({"name": o.name, "reason": _NOT_RANKED_REASON})
+            not_ranked.append({"name": o.name, "reason": _not_ranked_reason(o)})
         else:
             rankable.append(
                 Anchorage(
