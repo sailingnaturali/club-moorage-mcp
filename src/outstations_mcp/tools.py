@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from dataclasses import asdict
+
 from outstations_mcp.geo import within_radius
 from outstations_mcp.store import Store
 
@@ -52,3 +54,25 @@ def find_outstations_near(
             for o, dist in hits
         ]
     }
+
+
+def get_outstation(store: Store, name: str) -> dict:
+    o = store.get(name)
+    if o is None:
+        return {"found": False, "name": name}
+    record = {k: v for k, v in asdict(o).items()}
+    club = store.get_club(o.club)
+    club_rules = None
+    if club is not None:
+        club_rules = {
+            "club": club.club,
+            "name": club.name,
+            "max_nights": club.max_nights,
+            "checkout": club.checkout,
+            "quiet_hours": club.quiet_hours,
+            "burgee_required": club.burgee_required,
+            "reciprocal": club.reciprocal,
+            "source_url": club.source_url,
+            "rules": club.prose,
+        }
+    return {"found": True, "outstation": record, "club_rules": club_rules}
