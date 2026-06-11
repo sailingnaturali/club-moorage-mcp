@@ -16,44 +16,71 @@ def _matches_clubs(club: str, clubs: list[str] | None) -> bool:
     return clubs is None or club in clubs
 
 
-def list_outstations(store: Store, clubs: list[str] | None = None) -> dict:
+def _relationship(o: Outstation) -> str:
+    """None == an RVYC-owned outstation; reciprocals set it explicitly."""
+    return o.relationship or "outstation"
+
+
+def _is_available(o: Outstation) -> bool:
+    """A discontinued reciprocal (available: false) is no longer somewhere you can moor."""
+    return o.available is not False
+
+
+def _selectable(o: Outstation, clubs: list[str] | None, relationship: str | None) -> bool:
+    return (
+        _matches_clubs(o.club, clubs)
+        and (relationship is None or _relationship(o) == relationship)
+        and _is_available(o)
+    )
+
+
+def list_outstations(
+    store: Store, clubs: list[str] | None = None, relationship: str | None = None,
+) -> dict:
     return {
         "outstations": [
             {
                 "name": o.name,
                 "club": o.club,
+                "relationship": _relationship(o),
                 "region": o.region,
                 "island": o.island,
+                "locale": o.locale,
                 "lat": o.lat,
                 "lon": o.lon,
                 "moorage": o.moorage,
                 "max_loa_ft": o.max_loa_ft,
                 "raft_max": o.raft_max,
                 "mooring_buoys": o.mooring_buoys,
+                "free_nights": o.free_nights,
+                "fits_vaan": o.fits_vaan,
             }
             for o in store.outstations
-            if _matches_clubs(o.club, clubs)
+            if _selectable(o, clubs, relationship)
         ]
     }
 
 
 def find_outstations_near(
     store: Store, lat: float, lon: float, radius_nm: float = 20.0,
-    clubs: list[str] | None = None,
+    clubs: list[str] | None = None, relationship: str | None = None,
 ) -> dict:
-    candidates = [o for o in store.outstations if _matches_clubs(o.club, clubs)]
+    candidates = [o for o in store.outstations if _selectable(o, clubs, relationship)]
     hits = within_radius(candidates, lat, lon, radius_nm)
     return {
         "outstations": [
             {
                 "name": o.name,
                 "club": o.club,
+                "relationship": _relationship(o),
                 "distance_nm": round(dist, 2),
                 "lat": o.lat,
                 "lon": o.lon,
                 "moorage": o.moorage,
                 "max_loa_ft": o.max_loa_ft,
                 "mooring_buoys": o.mooring_buoys,
+                "free_nights": o.free_nights,
+                "fits_vaan": o.fits_vaan,
             }
             for o, dist in hits
         ]

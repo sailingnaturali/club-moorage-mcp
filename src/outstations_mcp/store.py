@@ -26,11 +26,14 @@ class Store:
     @classmethod
     def load(cls, root: Path | None = None) -> "Store":
         root = Path(root) if root is not None else data_path()
+        # Both relationship types load into one list: RVYC-owned outstations under
+        # outstations/, partner-club reciprocals under reciprocals/.
         outstations: list[Outstation] = []
-        out_dir = root / "outstations"
-        if out_dir.is_dir():
-            for md in sorted(out_dir.rglob("*.md")):
-                outstations.append(Outstation.from_markdown(md.read_text(encoding="utf-8")))
+        for sub in ("outstations", "reciprocals"):
+            sub_dir = root / sub
+            if sub_dir.is_dir():
+                for md in sorted(sub_dir.rglob("*.md")):
+                    outstations.append(Outstation.from_markdown(md.read_text(encoding="utf-8")))
         clubs: dict[str, Club] = {}
         club_dir = root / "clubs"
         if club_dir.is_dir():

@@ -33,17 +33,35 @@ _FORECAST_STEP = {
 _CLUBS = {"type": "array", "items": {"type": "string"},
           "description": "Optional club-code filter, e.g. [\"RVYC\"]. Omit for all clubs."}
 
+_RELATIONSHIP = {
+    "type": "string",
+    "enum": ["outstation", "reciprocal"],
+    "description": (
+        "Optional filter. 'outstation' = an RVYC-owned facility (members only); "
+        "'reciprocal' = a partner club that hosts visiting RVYC members. Omit for both."
+    ),
+}
+
 
 def tool_list() -> list[types.Tool]:
     return [
         types.Tool(
             name="list_outstations",
-            description="All yacht-club outstations with location and size limits.",
-            inputSchema={"type": "object", "properties": {"clubs": _CLUBS}},
+            description=(
+                "All club moorage records with location and size limits — RVYC-owned "
+                "outstations and partner-club reciprocals. Discontinued reciprocals are omitted."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {"clubs": _CLUBS, "relationship": _RELATIONSHIP},
+            },
         ),
         types.Tool(
             name="find_outstations_near",
-            description="Outstations within a radius of a position, nearest first.",
+            description=(
+                "Club moorage within a radius of a position, nearest first — RVYC outstations "
+                "and reciprocal partner clubs. Discontinued reciprocals are omitted."
+            ),
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -51,6 +69,7 @@ def tool_list() -> list[types.Tool]:
                     "lon": {"type": "number"},
                     "radius_nm": {"type": "number", "description": "Search radius in nautical miles (default 20)."},
                     "clubs": _CLUBS,
+                    "relationship": _RELATIONSHIP,
                 },
                 "required": ["lat", "lon"],
             },
@@ -87,11 +106,14 @@ def tool_list() -> list[types.Tool]:
 def dispatch(store: Store, name: str, args: dict) -> dict:
     """Route a tool call to its implementation. Shared by the server and tests."""
     if name == "list_outstations":
-        return tools.list_outstations(store, clubs=args.get("clubs"))
+        return tools.list_outstations(
+            store, clubs=args.get("clubs"), relationship=args.get("relationship"),
+        )
     if name == "find_outstations_near":
         return tools.find_outstations_near(
             store, lat=args["lat"], lon=args["lon"],
             radius_nm=args.get("radius_nm", 20.0), clubs=args.get("clubs"),
+            relationship=args.get("relationship"),
         )
     if name == "get_outstation":
         return tools.get_outstation(store, name=args["name"])

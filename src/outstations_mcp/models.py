@@ -59,6 +59,25 @@ class Outstation:
     swing_room: str | None = None                        # ample | adequate | limited | tight
     last_updated: str | None = None
     confidence: str | None = None
+    # --- relationship + reciprocal-club fields ---------------------------------
+    # `relationship` distinguishes an RVYC-owned outstation from a partner club that
+    # hosts visiting RVYC members. None == "outstation" (the bundled RVYC three).
+    relationship: str | None = None                      # None/"outstation" | "reciprocal"
+    available: bool | None = None                        # False == reciprocal discontinued (kept for context)
+    coords_approx: bool | None = None                    # coords from research, not the RVYC map pin
+    locale: str | None = None                            # town/area label for reciprocals (cf. island)
+    loa_note: str | None = None                          # non-LOA size limit (shallow channel, etc.)
+    power: bool | None = None                            # reciprocal dock has shore power (cf. shore_power str)
+    water: bool | None = None
+    vhf: str | None = None                               # reciprocal arrival hail (cf. vhf_channel)
+    reservation_required: bool | None = None
+    free_nights: int | None = None                       # reciprocal terms — these vary per club
+    nightly_fee: str | None = None
+    facility_fee: str | None = None
+    max_stay: str | None = None
+    insurance_min: str | None = None
+    fits_vaan: bool | str | None = None                  # True | False | "borderline" (49ft beamy cat)
+    flags: list[str] = field(default_factory=list)       # gotchas: verify-before-arrival, CBP port, etc.
     prose: str = ""
 
     from_markdown = classmethod(_from_markdown)

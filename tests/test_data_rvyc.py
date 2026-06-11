@@ -3,11 +3,22 @@ from outstations_mcp.store import Store
 
 def test_bundled_data_has_three_rvyc_outstations():
     s = Store.load()                      # default = bundled package data
-    names = sorted(o.name for o in s.outstations)
-    assert names == ["Friday Harbor", "Long Harbour", "Telegraph Harbour"]
+    owned = sorted(o.name for o in s.outstations if (o.relationship or "outstation") == "outstation")
+    assert owned == ["Friday Harbor", "Long Harbour", "Telegraph Harbour"]
     assert "RVYC" in s.clubs
     assert s.clubs["RVYC"].reciprocal is False
     assert s.clubs["RVYC"].max_nights == 3
+
+
+def test_bundled_data_includes_reciprocal_clubs():
+    s = Store.load()
+    reciprocals = [o for o in s.outstations if o.relationship == "reciprocal"]
+    assert len(reciprocals) == 18                          # the BC+WA cruising-grounds tranche
+    nanaimo = s.get("Nanaimo Yacht Club")
+    assert nanaimo.relationship == "reciprocal"
+    assert nanaimo.club == "NYC"                            # the partner club's own code, not RVYC
+    assert nanaimo.free_nights == 2
+    assert nanaimo.fits_vaan is True
 
 
 def test_long_harbour_is_overnight_capable():

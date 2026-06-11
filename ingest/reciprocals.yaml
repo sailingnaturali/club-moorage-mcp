@@ -1,0 +1,458 @@
+# Staging source for outstations-mcp `relationship: reciprocal` records.
+# Canonical, reviewable data; build_records.py renders these to reciprocals/<slug>.md
+# in the outstations-mcp frontmatter+prose format. Provenance: references/reciprocal-moorage.md
+# (RVYC 2024 Annual + 2026-06-10 web research) and references/data/rvyc-reciprocal-map.kml (coords).
+# Every row is verify-before-arrival; club sites 403'd direct fetch, terms/fees are 2026.
+#
+# First tranche = Naturali charter grounds + home (South VI, Gulf Islands, San Juans) and the
+# Vaan-relevant clubs. Vancouver-side crossing stops + Strait/N-Puget-Sound = next tranche
+# (data is in reciprocal-moorage.md). Field meanings are in README.md.
+
+records:
+  # ---------- South Vancouver Island / home ----------
+  - name: Sidney North Saanich Yacht Club
+    club: SNSYC
+    lat: 48.6756
+    lon: -123.4163
+    region: South Vancouver Island
+    locale: Sidney, BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: 70
+    power: included
+    water: true
+    phone: "+1 250-656-4600"
+    booking: first-come
+    free_nights: 0
+    nightly_fee: "CAD $8 night 1; then $8 + $1/ft/night"
+    max_stay: "3 nights / 30 days"
+    fits_vaan: true
+    confidence: med-high
+    source_url: https://snsyc.ca/Visitors
+    summary: >
+      Guest moorage at the SNSYC dock in North Saanich Marina, west shore of Tsehum Harbour.
+      First-come; no monitored VHF — phone ahead. Takes the Vaan comfortably (~70 ft). Confirm
+      the "no unoccupied overnight" rule before relying on it for a delivery/solo crew.
+
+  - name: Capital City Yacht Club
+    club: CCYC
+    lat: 48.6713
+    lon: -123.4178
+    region: South Vancouver Island
+    locale: North Saanich, BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: null
+    loa_note: "channel ~5 ft at low water is the binding constraint, not a posted LOA"
+    power: "$2/day"
+    water: true
+    phone: "+1 250-656-4512"
+    booking: self-register
+    free_nights: 2
+    facility_fee: "$5/day (incl. free nights)"
+    nightly_fee: "days 3-7 $0.50/ft/day + $5/day facility; max 7 days, 2x/yr"
+    fits_vaan: false
+    confidence: med-high
+    source_url: https://ccyc.ca/reciprocal/
+    flags:
+      - "~5 ft channel at low water — too shallow for the Vaan; fine for monohulls <45 ft"
+    summary: >
+      Blue Heron Basin, west side of Tsehum Harbour. Arrive at the 30-min red dock, register at
+      the kiosk, move to the yellow visitor dock or a signed-out member slip; gate fob in the
+      kiosk reciprocal key box. Shallow — time the tide and verify draft.
+
+  - name: Canadian Forces Sailing Association
+    club: CFSA
+    lat: 48.4392
+    lon: -123.4307
+    region: South Vancouver Island
+    locale: Esquimalt (CFB Esquimalt), BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: null
+    power: "being built (Lang Cove relocation)"
+    water: "being built (Lang Cove relocation)"
+    vhf: "10 (Port Security, mandatory before entering Esquimalt Harbour)"
+    phone: "+1 250-385-2646"
+    booking: first-come
+    free_nights: 1
+    nightly_fee: "1st night free (power extra); subsequent at posted rate"
+    max_stay: "2 non-consecutive nights/year per boat"
+    confidence: med
+    source_url: https://www.cfsaesq.ca/
+    flags:
+      - "Dock is inside CFB Esquimalt — call Port Security on VHF 10 before entering the harbour; photo ID at the gate, confirm civilian-access rules"
+      - "Relocated to Lang Cove; power/water still being developed — verify before arrival"
+      - "Most restrictive reciprocal in the area (2 nights/yr)"
+    summary: >
+      Lang Cove, eastern Esquimalt Harbour, within the naval base. Not a normal yacht-club call:
+      mandatory Port Security check-in on VHF 10, base access formalities. moorage@cfsaesq.ca.
+
+  # ---------- Gulf Islands / mid-Vancouver Island ----------
+  - name: Nanaimo Yacht Club
+    club: NYC
+    lat: 49.1771
+    lon: -123.9426
+    region: Gulf Islands
+    locale: Nanaimo, BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: 60
+    power: true
+    water: true
+    phone: "+1 250-754-7011"
+    booking: first-come
+    free_nights: 2
+    nightly_fee: "marina rates after the 2 free nights"
+    insurance_min: "CAD 2M"
+    fits_vaan: true
+    confidence: med
+    source_url: https://www.nanaimoyc.ca/reciprocal-clubs
+    summary: >
+      South side of K dock only (Newcastle Island Passage docks excluded), ~1 nm north of
+      downtown Nanaimo. Walk in and register at the office with club card + proof of $2M
+      liability. Takes the Vaan (60 ft cap).
+
+  - name: Schooner Cove Yacht Club
+    club: SCYC
+    lat: 49.2855
+    lon: -124.1358
+    region: Gulf Islands
+    locale: Nanoose Bay, BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: 150
+    power: "30/50A"
+    water: true
+    vhf: "66A"
+    phone: "+1 250-468-5364"
+    booking: reservation
+    reservation_required: true
+    insurance_min: "CAD 2M"
+    fits_vaan: true
+    confidence: med
+    source_url: https://scyc.ca/reciprocal-yacht-clubs-and-cruising-stations/
+    flags:
+      - "Reservation required (high demand) — not first-come"
+      - "Reciprocal terms (free nights/rate) not published — confirm with Fairwinds Marina"
+    summary: >
+      Ends of B/C/D docks at Fairwinds (Schooner Cove) Marina, Nanoose Bay. Reserve ahead
+      (marina@fairwinds.ca); proof of $2M liability at check-in. Marina takes vessels to 150 ft.
+
+  - name: Maple Bay Yacht Club
+    club: MBYC
+    lat: 48.8018
+    lon: -123.6042
+    region: Gulf Islands
+    locale: Maple Bay (Duncan), BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: 50
+    power: "extra"
+    water: true
+    vhf: "66A"
+    phone: "+1 250-746-4521"
+    booking: first-come
+    free_nights: 2
+    nightly_fee: "power billed extra"
+    fits_vaan: borderline
+    confidence: med
+    source_url: https://mbyc.bc.ca/visitors/
+    flags:
+      - "~50 ft cap — Vaan (49 ft beamy cat) is borderline; confirm"
+    summary: >
+      Outside the breakwater dock at Maple Bay, off Sansum Narrows. Hail VHF 66A / dockmaster
+      250-746-6917 on arrival. 2 non-consecutive nights free/year; inside moorage needs $1M
+      liability proof.
+
+  - name: Ladysmith Yacht Club
+    club: LYC
+    lat: 48.992
+    lon: -123.819
+    coords_approx: true
+    region: Gulf Islands
+    locale: Ladysmith, BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: 45
+    power: "30A"
+    water: true
+    vhf: "66A"
+    phone: "+1 250-245-4578"
+    booking: self-register
+    max_stay: "3 nights / 30 days"
+    fits_vaan: false
+    confidence: med
+    source_url: https://ladysmithyc.bc.ca/reciprocals
+    flags:
+      - "Coords approximate — not pinned on the RVYC map (Ladysmith Marina, A-dock)"
+      - "Was suspended Dec 2024-Feb 2025 (clubhouse sale/dock rework) — confirm restored"
+      - "45 ft cap — too short for the Vaan"
+    summary: >
+      "Green" docks, south side of A dock at Ladysmith Marina. First-come 24/7; self-register
+      via dock QR → online payment, gate code on the receipt.
+
+  - name: Saltspring Island Sailing Club
+    club: SISC
+    lat: 48.8444
+    lon: -123.4905
+    region: Gulf Islands
+    locale: Ganges, Salt Spring Island, BC
+    country: CA
+    moorage: [dock, anchoring]
+    max_loa_ft: null
+    power: "30A, extra"
+    water: "seasonal ban possible"
+    vhf: "78A"
+    phone: "+1 250-537-4879"
+    booking: first-come
+    insurance_min: "CAD 3M (from 2026-01-01)"
+    confidence: med
+    source_url: https://www.saltspringsailing.ca/reciprocal-moorage/sisc-visitor-moorage/
+    flags:
+      - "Insurance minimum raised to CAD 3M effective 2026-01-01"
+      - "Freshwater supply can be under seasonal ban"
+    summary: >
+      Ganges Harbour. Tie outside the breakwater on arrival; the Duty Wharfinger assigns an
+      interior slip 1100-1600 daily May 15-Sep 15. Register at the F-dock kiosk. No garbage
+      disposal on site.
+
+  - name: Silva Bay Yacht Club
+    club: SBYC
+    lat: 49.1496
+    lon: -123.6991
+    region: Gulf Islands
+    locale: Gabriola Island, BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: 40
+    power: "30A, $12/night"
+    water: false
+    vhf: "66A"
+    phone: "+1 250-247-8931"
+    booking: first-come
+    nightly_fee: "power $12/night"
+    max_stay: "Oct-Apr 2 nights/mo; May-Sep 1 night/mo"
+    fits_vaan: false
+    confidence: high
+    source_url: https://silvabayyachtclub.com/reciprocals/reciprocal-visitor-information/
+    flags:
+      - "Single 40 ft berth (Page's Resort dock E-10) — too short for the Vaan"
+    summary: >
+      One signed 40 ft berth (E-10) at Page's Resort & Marina, Silva Bay. Hail Page's on 66A;
+      staff direct you to E-10; register at the marina office with your club card.
+
+  - name: Deep Bay Yacht Club
+    club: DBYC
+    lat: 49.4645
+    lon: -124.7259
+    region: Gulf Islands
+    locale: Deep Bay (Baynes Sound), BC
+    country: CA
+    available: false
+    moorage: []
+    phone: "+1 250-757-8664"
+    confidence: high
+    source_url: https://dbyc.ca/information-for-visitors.html
+    flags:
+      - "Reciprocal moorage DISCONTINUED Jan 2026 — paid transient only (Harbour Authority float / Deep Bay Marina)"
+      - "Marina office float removed; no on-site wharfinger — awkward arrival, check current status"
+    summary: >
+      No reciprocal as of January 2026. Fallback is paid transient at the Comox Valley Harbour
+      Authority float D (wharfinger 250-757-9331) or Deep Bay Marina. Harbour LOA cap ~50 ft.
+
+  # ---------- San Juans / Anacortes / Bellingham / La Conner (WA) ----------
+  - name: San Juan Island Yacht Club
+    club: SJIYC
+    lat: 48.5369
+    lon: -123.0177
+    region: San Juan Islands
+    locale: Friday Harbor, WA
+    country: US
+    moorage: [dock]
+    max_loa_ft: 85
+    power: "30/50A"
+    water: true
+    phone: "+1 360-378-3434"
+    booking: first-come
+    nightly_fee: "$15/night (moorage + power + water)"
+    max_stay: "48 hr May-Sep; 1 stay / 30 days"
+    fits_vaan: true
+    confidence: high
+    source_url: https://sjiyc.com/
+    flags:
+      - "Same harbour as the RVYC outstation (Port of Friday Harbor slip C69) — outstation-and-reciprocal overlap test case"
+    summary: >
+      85 ft end-tie on F-dock, Port of Friday Harbor. First-come; check in with the Port
+      harbormaster, present membership card. Takes the Vaan.
+
+  - name: Orcas Island Yacht Club
+    club: OIYC
+    lat: 48.6323
+    lon: -122.9598
+    region: San Juan Islands
+    locale: West Sound, Orcas Island, WA
+    country: US
+    moorage: [dock]
+    max_loa_ft: 200
+    power: false
+    water: false
+    vhf: "78A"
+    phone: "+1 360-376-3256"
+    booking: first-come
+    free_nights: 2
+    nightly_fee: "no moorage fee stated"
+    max_stay: "2 nights"
+    fits_vaan: true
+    confidence: med
+    source_url: https://oiyc.org/
+    flags:
+      - "No power or water at the dock — plan self-sufficiency; showers ashore ($1 honor box)"
+    summary: >
+      290 ft dock on the NE side of West Sound, just west of West Sound Marina. First-come, yield
+      to OIYC members, fly the reciprocal burgee. Big enough for the Vaan but no services.
+
+  - name: Anacortes Yacht Club
+    club: AYC
+    lat: 48.5168
+    lon: -122.6050
+    region: San Juan Islands
+    locale: Anacortes, WA
+    country: US
+    moorage: [dock]
+    max_loa_ft: 50
+    power: "30A"
+    water: false
+    vhf: "66A"
+    phone: "+1 360-293-0694"
+    booking: first-come
+    nightly_fee: "$15/night"
+    max_stay: "2 nights/month, 6 days/year (Apr-Sep)"
+    fits_vaan: true
+    confidence: med
+    source_url: https://anacortesyachtclub.org/
+    flags:
+      - "Vaan fits slip O-91 (50 ft); O-98 is 33 ft"
+    summary: >
+      Reciprocal slips O-91 (50 ft) and O-98 (33 ft) at Cap Sante Marina, May-Oct (C-10 in
+      winter). First-come, sign in at the kiosk, fly the burgee.
+
+  - name: Semiahmoo Yacht Club
+    club: SEMYC
+    lat: 48.9884
+    lon: -122.7721
+    region: San Juan Islands
+    locale: Blaine, WA
+    country: US
+    moorage: [dock]
+    max_loa_ft: 50
+    power: "30A $3 / 50A $5 per night"
+    water: true
+    vhf: "68"
+    phone: "+1 360-371-0440"
+    booking: call-ahead
+    free_nights: 2
+    nightly_fee: "night 3 $0.50/ft, then full marina rates"
+    max_stay: "2 nights free/month, 7-night gap between stays"
+    fits_vaan: true
+    confidence: high
+    source_url: https://www.semiahmooyachtclub.org/reciprocal/reciprocal-visitor-information/
+    flags:
+      - "US CBP entry port — clear customs"
+    summary: >
+      Guest slip inside/east of the Semiahmoo Marina fuel dock (bow-in, starboard tie), up to
+      50 ft. Call the marina office ahead for the gate/restroom codes.
+
+  - name: Point Roberts Yacht Club
+    club: PRYC
+    lat: 48.979
+    lon: -123.064
+    coords_approx: true
+    region: San Juan Islands
+    locale: Point Roberts, WA
+    country: US
+    moorage: [dock]
+    power: "30A $5/day"
+    water: true
+    vhf: "66A"
+    phone: "+1 360-945-2255"
+    booking: reservation
+    reservation_required: true
+    free_nights: 2
+    nightly_fee: "after 48 hr $1/ft/day"
+    max_stay: "1 stay / 30 days, 2 days/year"
+    confidence: med-high
+    source_url: https://www.pointrobertsyachtclub.com/visitors-to-pryc.html
+    flags:
+      - "Coords approximate — not pinned on the RVYC map (Point Roberts Marina)"
+      - "Reserve >=48 hr ahead; max 2 vessels at once"
+      - "US CBP entry port — clear customs, check in at the fuel dock"
+    summary: >
+      Member/guest slips at Point Roberts Marina, as available. Call at least 48 hr ahead; after
+      clearing customs, check in at the fuel dock.
+
+  - name: Swinomish Yacht Club
+    club: SWYC
+    lat: 48.3953
+    lon: -122.4959
+    region: San Juan Islands
+    locale: La Conner, WA
+    country: US
+    moorage: [dock]
+    power: true
+    water: true
+    phone: "+1 360-466-4902"
+    booking: first-come
+    confidence: med
+    source_url: https://www.cruisesyc.com/reciprocalmoorage.html
+    flags:
+      - "Per-night fee not published — pay at the dock kiosk"
+    summary: >
+      110 ft of dock on the west side of E-dock, South Basin, La Conner Marina (Port of Skagit).
+      Enter south of the fuel dock, turn south toward town; register and pay at the dock head.
+
+  - name: Oak Harbor Yacht Club
+    club: OHYC
+    lat: 48.2879
+    lon: -122.6325
+    region: San Juan Islands
+    locale: Oak Harbor (Whidbey Island), WA
+    country: US
+    moorage: [dock]
+    max_loa_ft: 42
+    power: "30A"
+    phone: "+1 360-675-1314"
+    booking: first-come
+    nightly_fee: "$15/night"
+    max_stay: "2 nights; 1 slip"
+    fits_vaan: false
+    confidence: med-high
+    source_url: https://ohyc.org/reciprocals/
+    flags:
+      - "Single 42 ft slip (F-1) — too short for the Vaan"
+    summary: >
+      Northernmost slip F-1 (42 ft) on the Oak Harbor Marina breakwater float. First-come,
+      $15/night, one boat at a time.
+
+  - name: Roche Harbor Yacht Club
+    club: RHYC
+    lat: 47.5877
+    lon: -122.6658
+    region: Central Puget Sound
+    locale: moorage at Bremerton Marina, WA
+    country: US
+    moorage: [dock]
+    max_loa_ft: 60
+    power: "extra"
+    phone: "+1 360-378-2155"
+    booking: first-come
+    nightly_fee: "RHYC pays 60 ft of dock/night (2 boats); excess LOA/power on guest"
+    confidence: high
+    source_url: https://rhyc.clubexpress.com/
+    flags:
+      - "Reciprocal dock is at BREMERTON Marina (Kitsap), NOT Roche Harbor Resort (which charges full rates)"
+      - "Not pinned on the RVYC map; coords are the Bremerton moorage"
+    summary: >
+      Despite the name, RHYC's reciprocal moorage is at Bremerton Marina, not Roche Harbor.
+      First-come, check in at the Bremerton harbormaster; RHYC covers 60 ft of dock per night
+      for up to 2 boats.
