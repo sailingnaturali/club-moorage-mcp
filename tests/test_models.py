@@ -1,4 +1,4 @@
-from club_moorage_mcp.models import Outstation, Club
+from club_moorage_mcp.models import Moorage, Club
 
 OUTSTATION_MD = """---
 name: Near Cove
@@ -40,7 +40,7 @@ Stay limited to three nights. Quiet hours 2200-0800.
 
 
 def test_outstation_roundtrip_is_stable():
-    o = Outstation.from_markdown(OUTSTATION_MD)
+    o = Moorage.from_markdown(OUTSTATION_MD)
     assert o.name == "Near Cove"
     assert o.club == "TC"
     assert o.moorage == ["dock", "mooring_buoys", "anchoring"]
@@ -49,11 +49,11 @@ def test_outstation_roundtrip_is_stable():
     assert o.exposed_sectors == []
     assert "head of a protected harbour" in o.prose
     # round-trip and re-parse equals the first parse
-    assert Outstation.from_markdown(o.to_markdown()) == o
+    assert Moorage.from_markdown(o.to_markdown()) == o
 
 
 def test_outstation_drops_none_and_empty_from_frontmatter():
-    o = Outstation(name="Bare", club="TC")
+    o = Moorage(name="Bare", club="TC")
     md = o.to_markdown()
     assert "name: Bare" in md
     assert "lat:" not in md          # None dropped

@@ -15,10 +15,10 @@ a `relationship`:
 
 ## Tools
 
-- `list_outstations(clubs?, relationship?)` — all moorage: location, coords, size limits.
-- `find_outstations_near(lat, lon, radius_nm=20, clubs?, relationship?)` — nearby moorage, nearest first.
-- `get_outstation(name)` — full record + prose; for an outstation, also the club's general rules.
-- `rank_outstations(names, forecast)` — overnight-comfort rank for records that
+- `list_moorage(clubs?, relationship?)` — all moorage: location, coords, size limits.
+- `find_moorage_near(lat, lon, radius_nm=20, clubs?, relationship?)` — nearby moorage, nearest first.
+- `get_moorage(name)` — full record + prose; for an outstation, also the club's general rules.
+- `rank_moorage(names, forecast)` — overnight-comfort rank for records that
   support anchoring/mooring; dock-only records are returned under `not_ranked`.
   Reuses pilotbook-mcp's scoring against a weather-mcp forecast.
 

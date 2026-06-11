@@ -1,4 +1,4 @@
-"""Outstation and Club records with markdown-frontmatter (de)serialization."""
+"""Moorage and Club records with markdown-frontmatter (de)serialization."""
 
 from __future__ import annotations
 
@@ -27,7 +27,7 @@ def _to_markdown(self) -> str:
 
 
 @dataclass
-class Outstation:
+class Moorage:
     name: str
     club: str
     lat: float | None = None

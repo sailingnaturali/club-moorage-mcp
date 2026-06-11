@@ -1,12 +1,12 @@
 from club_moorage_mcp.geo import within_radius
-from club_moorage_mcp.models import Outstation
+from club_moorage_mcp.models import Moorage
 
 
 def _stations():
     return [
-        Outstation(name="Near Cove", club="TC", lat=48.86, lon=-123.46),
-        Outstation(name="Dock Only", club="TC", lat=48.53, lon=-123.01),
-        Outstation(name="No Coords", club="TC"),
+        Moorage(name="Near Cove", club="TC", lat=48.86, lon=-123.46),
+        Moorage(name="Dock Only", club="TC", lat=48.53, lon=-123.01),
+        Moorage(name="No Coords", club="TC"),
     ]
 
 

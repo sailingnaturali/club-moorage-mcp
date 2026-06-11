@@ -11,12 +11,12 @@ def _store():
 
 def test_loads_outstations_and_clubs():
     s = _store()
-    names = sorted(o.name for o in s.outstations)
+    names = sorted(o.name for o in s.records)
     assert names == ["Dock Only", "Near Cove"]
     assert s.clubs["TC"].name == "Test Club"
 
 
-def test_get_outstation_is_case_insensitive():
+def test_get_moorage_is_case_insensitive():
     s = _store()
     assert s.get("near cove").name == "Near Cove"
     assert s.get("Nope") is None

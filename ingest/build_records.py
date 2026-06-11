@@ -3,7 +3,7 @@
 
 Reciprocal-club records (`relationship: reciprocal`) are too many to hand-author without
 drift, so the canonical data lives in reciprocals.yaml and this script emits conforming
-markdown (frontmatter + prose) in the same shape as Outstation.from_markdown/to_markdown.
+markdown (frontmatter + prose) in the same shape as Moorage.from_markdown/to_markdown.
 The three RVYC-owned outstations are hand-authored under data/outstations/ instead.
 
 Frontmatter key order is fixed; None / empty / false-by-default fields are dropped so
@@ -21,7 +21,7 @@ SRC = HERE / "reciprocals.yaml"
 OUT = HERE.parent / "src" / "club_moorage_mcp" / "data" / "reciprocals"
 
 # `relationship` distinguishes a reciprocal club from an RVYC-owned outstation; the rest
-# mirrors the club_moorage_mcp.models.Outstation schema.
+# mirrors the club_moorage_mcp.models.Moorage schema.
 ORDER = [
     "name", "club", "relationship", "lat", "lon", "coords_approx",
     "region", "locale", "country", "source_url",

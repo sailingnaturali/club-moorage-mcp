@@ -3,7 +3,7 @@ from club_moorage_mcp.store import Store
 
 def test_bundled_data_has_three_rvyc_outstations():
     s = Store.load()                      # default = bundled package data
-    owned = sorted(o.name for o in s.outstations if (o.relationship or "outstation") == "outstation")
+    owned = sorted(o.name for o in s.records if (o.relationship or "outstation") == "outstation")
     assert owned == ["Friday Harbor", "Long Harbour", "Telegraph Harbour"]
     assert "RVYC" in s.clubs
     assert s.clubs["RVYC"].reciprocal is False
@@ -12,7 +12,7 @@ def test_bundled_data_has_three_rvyc_outstations():
 
 def test_bundled_data_includes_reciprocal_clubs():
     s = Store.load()
-    reciprocals = [o for o in s.outstations if o.relationship == "reciprocal"]
+    reciprocals = [o for o in s.records if o.relationship == "reciprocal"]
     assert len(reciprocals) == 45                          # BC+WA: charter core + crossing/Strait tranche
     nanaimo = s.get("Nanaimo Yacht Club")
     assert nanaimo.relationship == "reciprocal"

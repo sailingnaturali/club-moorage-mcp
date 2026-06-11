@@ -13,17 +13,17 @@ def _store():
 def test_tool_list_advertises_four_tools():
     names = {t.name for t in tool_list()}
     assert names == {
-        "list_outstations", "find_outstations_near", "get_outstation", "rank_outstations",
+        "list_moorage", "find_moorage_near", "get_moorage", "rank_moorage",
     }
 
 
 def test_dispatch_routes_find():
-    out = dispatch(_store(), "find_outstations_near", {"lat": 48.86, "lon": -123.46, "radius_nm": 60})
-    assert out["outstations"][0]["name"] == "Near Cove"
+    out = dispatch(_store(), "find_moorage_near", {"lat": 48.86, "lon": -123.46, "radius_nm": 60})
+    assert out["moorage"][0]["name"] == "Near Cove"
 
 
 def test_dispatch_routes_get():
-    out = dispatch(_store(), "get_outstation", {"name": "Near Cove"})
+    out = dispatch(_store(), "get_moorage", {"name": "Near Cove"})
     assert out["found"] is True
 
 

@@ -1,4 +1,4 @@
-"""club-moorage-mcp server. Exposes yacht-club outstation tools over stdio.
+"""club-moorage-mcp server. Exposes yacht-club moorage tools over stdio.
 
 Data directory comes from CLUB_MOORAGE_DATA_PATH (default: bundled package data).
 """
@@ -46,7 +46,7 @@ _RELATIONSHIP = {
 def tool_list() -> list[types.Tool]:
     return [
         types.Tool(
-            name="list_outstations",
+            name="list_moorage",
             description=(
                 "All club moorage records with location and size limits — RVYC-owned "
                 "outstations and partner-club reciprocals. Discontinued reciprocals are omitted."
@@ -57,7 +57,7 @@ def tool_list() -> list[types.Tool]:
             },
         ),
         types.Tool(
-            name="find_outstations_near",
+            name="find_moorage_near",
             description=(
                 "Club moorage within a radius of a position, nearest first — RVYC outstations "
                 "and reciprocal partner clubs. Discontinued reciprocals are omitted."
@@ -75,8 +75,8 @@ def tool_list() -> list[types.Tool]:
             },
         ),
         types.Tool(
-            name="get_outstation",
-            description="Full record and prose for one named outstation, plus its club's general rules.",
+            name="get_moorage",
+            description="Full record and prose for one named moorage, plus (for outstations) its club's general rules.",
             inputSchema={
                 "type": "object",
                 "properties": {"name": {"type": "string"}},
@@ -84,10 +84,10 @@ def tool_list() -> list[types.Tool]:
             },
         ),
         types.Tool(
-            name="rank_outstations",
+            name="rank_moorage",
             description=(
-                "Rank overnight-capable outstations by comfort against a forecast (same scoring "
-                "as pilotbook rank_anchorages). Dock-only stations are returned under not_ranked. "
+                "Rank overnight-capable moorage by comfort against a forecast (same scoring "
+                "as pilotbook rank_anchorages). Dock-only records are returned under not_ranked. "
                 "Fetch the forecast from weather-mcp (steps with wind_from_deg, wind_kn, "
                 "swell_from_deg, swell_m)."
             ),
@@ -105,20 +105,20 @@ def tool_list() -> list[types.Tool]:
 
 def dispatch(store: Store, name: str, args: dict) -> dict:
     """Route a tool call to its implementation. Shared by the server and tests."""
-    if name == "list_outstations":
-        return tools.list_outstations(
+    if name == "list_moorage":
+        return tools.list_moorage(
             store, clubs=args.get("clubs"), relationship=args.get("relationship"),
         )
-    if name == "find_outstations_near":
-        return tools.find_outstations_near(
+    if name == "find_moorage_near":
+        return tools.find_moorage_near(
             store, lat=args["lat"], lon=args["lon"],
             radius_nm=args.get("radius_nm", 20.0), clubs=args.get("clubs"),
             relationship=args.get("relationship"),
         )
-    if name == "get_outstation":
-        return tools.get_outstation(store, name=args["name"])
-    if name == "rank_outstations":
-        return tools.rank_outstations(store, names=args["names"], forecast=args.get("forecast", []))
+    if name == "get_moorage":
+        return tools.get_moorage(store, name=args["name"])
+    if name == "rank_moorage":
+        return tools.rank_moorage(store, names=args["names"], forecast=args.get("forecast", []))
     raise ValueError(f"Unknown tool: {name}")
 
 
@@ -139,7 +139,7 @@ def build_server(store: Store) -> Server:
 
 async def _run() -> None:
     store = Store.load()
-    logger.info("loaded %d outstations from %s", len(store.outstations), store.root)
+    logger.info("loaded %d moorage records from %s", len(store.records), store.root)
     server = build_server(store)
     async with stdio_server() as (read, write):
         await server.run(read, write, server.create_initialization_options())
