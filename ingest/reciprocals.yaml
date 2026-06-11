@@ -456,3 +456,561 @@ records:
       Despite the name, RHYC's reciprocal moorage is at Bremerton Marina, not Roche Harbor.
       First-come, check in at the Bremerton harbormaster; RHYC covers 60 ft of dock per night
       for up to 2 boats.
+
+  # ===== Tranche 2 (2026-06-11): Vancouver-side crossing stops + Strait/N Puget Sound =====
+  # Same BC+WA scope, beyond the charter core. Data from references/reciprocal-moorage.md.
+
+  # ---------- Vancouver / mainland side (BC) ----------
+  - name: False Creek Yacht Club
+    club: FCYC
+    lat: 49.2733
+    lon: -123.1327
+    region: Vancouver / Lower Mainland
+    locale: False Creek (under Granville Bridge), Vancouver, BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: 85
+    water: true
+    vhf: "66A"
+    phone: "+1 604-682-3292"
+    booking: call-ahead
+    nightly_fee: "~$0.75/ft/night (2017 figure — confirm)"
+    fits_vaan: true
+    confidence: med
+    flags:
+      - "Best Vancouver-side Vaan stop — big outside docks, downtown"
+      - "Recip rate is a stale 2017 figure — confirm current"
+    summary: >
+      Large transient program on the outside docks under the Granville Bridge, downtown
+      Vancouver. Hail the Welcome Centre on VHF 66A. Outside slips take big boats (30-85 ft).
+
+  - name: Royal Vancouver Yacht Club
+    club: RVANYC
+    lat: 49.2728
+    lon: -123.1878
+    region: Vancouver / Lower Mainland
+    locale: Jericho / Coal Harbour, Vancouver, BC
+    country: CA
+    moorage: [dock]
+    power: "30/50A"
+    water: true
+    vhf: "66A"
+    phone: "+1 604-224-1344"
+    booking: reservation
+    reservation_required: true
+    free_nights: 0
+    nightly_fee: "$3/ft/day + GST; no free nights listed"
+    confidence: med
+    source_url: https://www.royalvan.com/
+    flags:
+      - "NOT Royal Victoria YC (RVYC) — this is Royal VANCOUVER YC, a different club"
+      - "Email a letter of introduction to harbourmaster@royalvan.com before arrival"
+    summary: >
+      Reciprocal moorage at the Jericho and Coal Harbour stations; email the harbourmaster a
+      letter of introduction before arriving. Distinct from RVYC / Royal Victoria.
+
+  - name: Vancouver Rowing Club
+    club: VRC
+    lat: 49.2966
+    lon: -123.1343
+    region: Vancouver / Lower Mainland
+    locale: Coal Harbour (Stanley Park), Vancouver, BC
+    country: CA
+    moorage: [dock]
+    power: "$5/day utility (power + water)"
+    phone: "+1 604-687-3400"
+    booking: call-ahead
+    free_nights: 2
+    nightly_fee: "after 2 free nights $0.75/ft + $5/day; max 12 nights/yr"
+    max_stay: "2 nights/mo, 12/yr"
+    confidence: med-high
+    summary: >
+      Year-round moorage (~225 berths) by Stanley Park in Coal Harbour. Two free nights a
+      month; reservations recommended.
+
+  - name: West Vancouver Yacht Club
+    club: WVYC
+    lat: 49.3565
+    lon: -123.2732
+    region: Vancouver / Lower Mainland
+    locale: Fisherman's Cove, West Vancouver, BC
+    country: CA
+    moorage: [dock]
+    phone: "+1 604-921-7575"
+    booking: call-ahead
+    reservation_required: true
+    free_nights: 2
+    nightly_fee: "after 2 free nights $0.75/ft"
+    confidence: med
+    flags:
+      - "Summer only — guest moorage is vacated member slips; not at outstations"
+      - "Call or email at least 2 days ahead"
+    summary: >
+      Summer guest moorage in vacated member slips at Fisherman's Cove; arrange at least two
+      days ahead.
+
+  - name: Burrard Yacht Club
+    club: BURYC
+    lat: 49.3134
+    lon: -123.0928
+    region: Vancouver / Lower Mainland
+    locale: Mosquito Creek, North Vancouver, BC
+    country: CA
+    moorage: [dock]
+    power: "$4/day"
+    phone: "+1 604-988-0817"
+    booking: call-ahead
+    free_nights: 2
+    nightly_fee: "after 2 free nights $1/ft"
+    insurance_min: "CAD $2M"
+    fits_vaan: borderline
+    confidence: med
+    flags:
+      - "Home-port slips only; fleet 25-60 ft, so Vaan fit is slip-by-slip"
+    summary: >
+      Reciprocal moorage at Mosquito Creek, North Van; two free nights then $1/ft. Member-slip
+      dependent.
+
+  - name: Richmond Yacht Club
+    club: RICYC
+    lat: 49.1814
+    lon: -123.1411
+    region: Fraser River
+    locale: Fraser middle arm (off Arthur Laing Br), Richmond, BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: 50
+    power: "15A"
+    phone: "+1 604-278-1913"
+    booking: call-ahead
+    free_nights: 3
+    fits_vaan: borderline
+    confidence: med
+    flags:
+      - "Freshwater, up the Fraser middle arm — a destination, not a quick crossing stop"
+    summary: >
+      Three free nights on the reciprocal dock in the Fraser's middle arm (freshwater).
+
+  - name: Ladner Yacht Club
+    club: LADYC
+    lat: 49.0953
+    lon: -123.0833
+    region: Fraser River
+    locale: Fraser south arm, Ladner, BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: 50
+    loa_note: "basin ~5 ft at zero tide"
+    power: "30A $5/day"
+    water: "seasonal"
+    phone: "+1 604-946-4056"
+    booking: call-ahead
+    free_nights: 2
+    nightly_fee: "after 48 hr $1/ft, max 1 week"
+    max_stay: "1 week"
+    fits_vaan: false
+    confidence: med
+    flags:
+      - "~5 ft at zero tide — time the tide; CBSA if arriving from the US"
+      - "Call the caretaker ahead"
+    summary: >
+      48 hours free in the Fraser south arm; shallow at low tide, so time the entry and call
+      the caretaker first.
+
+  - name: Eagle Harbour Yacht Club
+    club: EHYC
+    lat: 49.3540
+    lon: -123.2701
+    region: Vancouver / Lower Mainland
+    locale: Eagle Harbour / Fisherman's Cove, West Vancouver, BC
+    country: CA
+    moorage: [dock]
+    max_loa_ft: 38
+    power: "15A / 300W only"
+    phone: "+1 604-921-7636"
+    booking: call-ahead
+    nightly_fee: "rate not published; $20 key deposit"
+    fits_vaan: false
+    confidence: med
+    flags:
+      - "38 ft hard cap + token 15A power — interim-boat only"
+    summary: >
+      Space-permitting guest moorage at Eagle Harbour; the 38 ft cap and minimal power make it
+      an interim-boat stop, not a Vaan one.
+
+  - name: Deep Cove Yacht Club
+    club: DCYC
+    lat: 49.3273
+    lon: -122.9488
+    region: Vancouver / Lower Mainland
+    locale: Deep Cove, Indian Arm, North Vancouver, BC
+    country: CA
+    moorage: [dock]
+    phone: "+1 604-929-1009"
+    booking: call-ahead
+    free_nights: 2
+    confidence: low
+    flags:
+      - "Indian Arm — a 15-20 nm detour off the crossing route"
+    summary: >
+      48 hours free at Deep Cove, but it's well up Indian Arm — a notable detour.
+
+  # ---------- San Juans / Anacortes / Bellingham / La Conner — extras (WA) ----------
+  - name: Fidalgo Yacht Club
+    club: FIDYC
+    lat: 48.4950
+    lon: -122.6868
+    region: San Juan Islands
+    locale: Cap Sante Marina (Q-dock), Anacortes, WA
+    country: US
+    moorage: [dock]
+    power: "$4/day"
+    vhf: "66"
+    phone: "+1 360-293-0694"
+    booking: first-come
+    free_nights: 2
+    max_stay: "2 nights/30 days, 6/yr"
+    confidence: med
+    summary: >
+      Seasonal-slip reciprocal at Cap Sante Marina's Q-dock; two free nights per 30 days, up to
+      six a year.
+
+  - name: Flounder Bay Yacht Club
+    club: FBYC
+    lat: 48.490
+    lon: -122.670
+    coords_approx: true
+    region: San Juan Islands
+    locale: Skyline Marina, Anacortes, WA
+    country: US
+    moorage: [dock]
+    max_loa_ft: 44
+    loa_note: "occasionally 50 ft with approval"
+    power: "30A"
+    water: true
+    phone: "+1 360-293-3325"
+    free_nights: 0
+    nightly_fee: "$5 night 1, $15 after; max 2 days"
+    max_stay: "2 days"
+    insurance_min: "$300K"
+    fits_vaan: false
+    confidence: med
+    summary: >
+      Skyline Marina, Anacortes; 44 ft cap (occasionally 50 with approval) — too short for the
+      Vaan.
+
+  - name: Bellingham Yacht Club
+    club: BELYC
+    lat: 48.7576
+    lon: -122.5050
+    region: Bellingham
+    locale: Squalicum Harbour (Gate 3), Bellingham, WA
+    country: US
+    moorage: [dock]
+    phone: "+1 360-733-7390"
+    confidence: low
+    flags:
+      - "Terms not found — call ahead"
+    summary: >
+      Reciprocal moorage at Squalicum Harbour Gate 3; details unconfirmed, call ahead.
+
+  - name: Corinthian Yacht Club of Bellingham
+    club: CYCB
+    lat: 48.752
+    lon: -122.508
+    coords_approx: true
+    region: Bellingham
+    locale: Squalicum Harbour (O-dock), Bellingham, WA
+    country: US
+    moorage: [dock]
+    max_loa_ft: 38
+    power: "$4/night"
+    vhf: "16"
+    phone: "+1 360-306-1974"
+    booking: first-come
+    max_stay: "1 night"
+    fits_vaan: false
+    confidence: med
+    summary: >
+      One night in a vacant member slip at Squalicum Harbour; 38 ft cap.
+
+  - name: Shelter Bay Yacht Club
+    club: SHBYC
+    lat: 48.392
+    lon: -122.507
+    coords_approx: true
+    region: San Juan Islands
+    locale: Shelter Bay (Swinomish Channel), La Conner, WA
+    country: US
+    moorage: [dock]
+    loa_note: "no fixed guest dock — member slips, size varies"
+    phone: "+1 360-610-7226"
+    booking: call-ahead
+    reservation_required: true
+    confidence: med
+    flags:
+      - "No fixed dock — availability unpredictable; call/text the hotline ahead"
+      - "RVYC map pin was mis-geocoded to NY; coords corrected to La Conner"
+    summary: >
+      No fixed guest dock — moorage is in available member slips, so availability is
+      unpredictable; call or text the hotline ahead.
+
+  # ---------- Strait of Juan de Fuca / N Puget Sound (WA) ----------
+  - name: Seattle Yacht Club
+    club: SEAYC
+    lat: 47.6453
+    lon: -122.3085
+    region: Central Puget Sound
+    locale: Portage Bay mainstation, Seattle, WA
+    country: US
+    moorage: [dock]
+    raft_max: 3
+    power: "30/50A"
+    water: true
+    phone: "+1 206-325-1000"
+    free_nights: 2
+    nightly_fee: "after 2 free days/yr, posted rates"
+    max_stay: "7 days/visit, 4 visits/yr"
+    fits_vaan: true
+    confidence: high
+    flags:
+      - "Reciprocal guests get the Portage Bay mainstation only — the outstation network is members-only"
+    summary: >
+      Reciprocal moorage at the Portage Bay mainstation (Dock 2). Seattle YC's many outstations
+      are members-only.
+
+  - name: Eagle Harbor Yacht Club
+    club: EHYCB
+    lat: 47.6158
+    lon: -122.5136
+    region: Central Puget Sound
+    locale: Eagle Harbor Marina, Bainbridge Island, WA
+    country: US
+    moorage: [dock]
+    max_loa_ft: 200
+    loa_note: "150 ft guest dock"
+    power: "$3/night"
+    water: true
+    vhf: "9"
+    phone: "+1 206-842-4003"
+    booking: call-ahead
+    max_stay: "48 hr"
+    fits_vaan: true
+    confidence: med
+    flags:
+      - "Bainbridge Island Eagle Harbor (WA) — distinct from BC's Eagle Harbour YC"
+    summary: >
+      150 ft guest dock at Eagle Harbor Marina, Bainbridge; 48-hour max, call Tue-Sat.
+
+  - name: Port Angeles Yacht Club
+    club: PAYC
+    lat: 48.1277
+    lon: -123.4566
+    region: Strait of Juan de Fuca
+    locale: PA Boat Haven, Port Angeles, WA
+    country: US
+    moorage: [dock]
+    loa_note: "broadside to 200 ft"
+    power: "30/50/100A"
+    vhf: "9"
+    phone: "+1 360-457-4505"
+    free_nights: 2
+    nightly_fee: "reimbursement model — pay the marina, club reimburses <=$51.20/night"
+    max_stay: "2 boats/club"
+    fits_vaan: true
+    confidence: med
+    flags:
+      - "Reimbursement model — pay the marina, claim back from the club; keep receipts"
+    summary: >
+      Broadside moorage at PA Boat Haven; the club reimburses up to ~$51/night (pay the marina
+      first, claim back).
+
+  - name: Port Townsend Yacht Club
+    club: PTYC
+    lat: 48.1083
+    lon: -122.7731
+    region: Strait of Juan de Fuca
+    locale: PT Boat Haven, Port Townsend, WA
+    country: US
+    moorage: [dock]
+    vhf: "66A"
+    phone: "+1 360-385-2355"
+    booking: first-come
+    max_stay: "1 night/mo (May-Sep), 2/yr"
+    confidence: med
+    summary: >
+      First-come slip (#281) at PT Boat Haven; one night a month May-Sep.
+
+  - name: Port Ludlow Yacht Club
+    club: PLYC
+    lat: 47.9237
+    lon: -122.6837
+    region: Central Puget Sound
+    locale: Port Ludlow Marina (A-dock NE), WA
+    country: US
+    moorage: [dock]
+    loa_note: "~80 ft linear"
+    water: true
+    vhf: "16/68"
+    phone: "+1 360-437-0513"
+    free_nights: 2
+    max_stay: "2 nights/30 days, 5/yr"
+    fits_vaan: true
+    confidence: med
+    summary: >
+      ~80 ft of linear dock at Port Ludlow Marina; two free nights per 30 days.
+
+  - name: Poulsbo Yacht Club
+    club: PYC
+    lat: 47.7275
+    lon: -122.6425
+    region: Central Puget Sound
+    locale: Port of Poulsbo (Liberty Bay), WA
+    country: US
+    moorage: [dock]
+    loa_note: "122 ft linear"
+    water: true
+    vhf: "66"
+    phone: "+1 360-779-3116"
+    nightly_fee: "$5 day 1, $0.50/ft days 2-4"
+    max_stay: "96 hr, 2 visits/qtr"
+    fits_vaan: true
+    confidence: med
+    summary: >
+      122 ft of linear dock at the Port of Poulsbo, Liberty Bay; small fee, 96-hour max.
+
+  - name: Kingston Cove Yacht Club
+    club: KCYC
+    lat: 47.7969
+    lon: -122.4978
+    region: Central Puget Sound
+    locale: Port of Kingston, WA
+    country: US
+    moorage: [dock]
+    power: "$5/day"
+    vhf: "65"
+    phone: "+1 360-297-3545"
+    free_nights: 1
+    nightly_fee: "nights 2-3 fee"
+    max_stay: "3 nights, 2 visits/8 wk"
+    confidence: med
+    summary: >
+      Two reciprocal slips at the Port of Kingston; first night free, three-night max.
+
+  - name: Edmonds Yacht Club
+    club: EDYC
+    lat: 47.8089
+    lon: -122.3889
+    region: Central Puget Sound
+    locale: Port of Edmonds (N-dock), WA
+    country: US
+    moorage: [dock]
+    loa_note: "~85 ft linear, no rafting"
+    power: "30A included"
+    vhf: "69"
+    phone: "+1 425-508-7490"
+    booking: self-register
+    nightly_fee: "$5/day"
+    max_stay: "48 hr"
+    fits_vaan: true
+    confidence: med
+    summary: >
+      ~85 ft of linear dock at the Port of Edmonds N-dock; self-register, 48-hour max, no
+      rafting.
+
+  - name: Everett Yacht Club
+    club: EVYC
+    lat: 47.9951
+    lon: -122.2211
+    region: Central Puget Sound
+    locale: Port of Everett (E-dock), WA
+    country: US
+    moorage: [dock]
+    max_loa_ft: 50
+    power: "30A included"
+    vhf: "16"
+    phone: "+1 425-218-7163"
+    nightly_fee: "$15/day"
+    max_stay: "2 days/30 days"
+    fits_vaan: borderline
+    confidence: med
+    flags:
+      - "May-Sep only"
+    summary: >
+      50 ft slips at the Port of Everett E-dock, summer only; $15/day, two days per 30.
+
+  - name: Sequim Bay Yacht Club
+    club: SQYC
+    lat: 48.0621
+    lon: -123.0407
+    region: Strait of Juan de Fuca
+    locale: John Wayne Marina, Sequim Bay, WA
+    country: US
+    moorage: [dock]
+    vhf: "78A"
+    phone: "+1 360-460-7623"
+    free_nights: 1
+    max_stay: "1 visit/mo (1 vessel/club)"
+    confidence: med
+    summary: >
+      One free night for a single visiting vessel at John Wayne Marina, Sequim Bay.
+
+  - name: Corinthian Yacht Club of Seattle
+    club: CYCS
+    lat: 47.6855
+    lon: -122.4037
+    region: Central Puget Sound
+    locale: Shilshole Bay Marina (S-dock), Seattle, WA
+    country: US
+    moorage: [dock]
+    vhf: "17"
+    phone: "+1 206-789-1919"
+    nightly_fee: "reimbursement model — reimburses <=$70/visit"
+    max_stay: "1 night/yr"
+    confidence: med
+    flags:
+      - "Reimbursement model — pay the marina, claim back; keep receipts"
+    summary: >
+      Reimbursement-model reciprocal at Shilshole (S-dock); the club reimburses up to $70 for
+      one visit a year.
+
+  - name: Queen City Yacht Club
+    club: QCYC
+    lat: 47.6435
+    lon: -122.3164
+    region: Central Puget Sound
+    locale: Portage Bay mainstation, Seattle, WA
+    country: US
+    moorage: [dock]
+    raft_max: 3
+    loa_note: "West 100 ft of Dock 3"
+    power: "30A"
+    water: true
+    phone: "+1 206-709-2000"
+    nightly_fee: "$4/night"
+    max_stay: "5 consecutive days/month"
+    fits_vaan: true
+    confidence: med
+    flags:
+      - "No pump-out"
+    summary: >
+      West 100 ft of Dock 3 at the Portage Bay mainstation; $4/night, five consecutive days a
+      month.
+
+  - name: Port Madison Yacht Club
+    club: PMYC
+    lat: 47.6954
+    lon: -122.5356
+    region: Central Puget Sound
+    locale: Hidden Cove, Bainbridge Island, WA
+    country: US
+    moorage: [dock]
+    loa_note: "~70 ft, muddy/shallow at low water"
+    phone: "+1 206-842-8826"
+    booking: first-come
+    fits_vaan: borderline
+    confidence: low-med
+    flags:
+      - "Muddy and shallow at low water"
+    summary: >
+      Self-serve guest float at Hidden Cove; ~70 ft but muddy and shallow at low water.

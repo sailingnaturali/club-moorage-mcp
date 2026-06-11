@@ -22,8 +22,18 @@ def test_relationship_filter_separates_owned_from_reciprocal():
     owned = list_outstations(s, relationship="outstation")["outstations"]
     recip = list_outstations(s, relationship="reciprocal")["outstations"]
     assert {o["name"] for o in owned} == {"Friday Harbor", "Long Harbour", "Telegraph Harbour"}
-    assert len(recip) == 17        # 18 loaded, minus discontinued Deep Bay (available: false)
+    assert len(recip) == 44        # 45 loaded, minus discontinued Deep Bay (available: false)
     assert all(o["relationship"] == "reciprocal" for o in recip)
+
+
+def test_royal_vancouver_is_not_coded_as_royal_victoria():
+    # "RVYC" is Royal VICTORIA (the host club). Royal VANCOUVER must use a different code,
+    # or a clubs=["RVYC"] filter would wrongly sweep it in.
+    s = Store.load()
+    rvan = s.get("Royal Vancouver Yacht Club")
+    assert rvan is not None
+    assert rvan.club == "RVANYC"
+    assert rvan.club != "RVYC"
 
 
 def test_discontinued_reciprocal_excluded_from_list_and_find_but_gettable():

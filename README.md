@@ -9,8 +9,9 @@ a `relationship`:
   Telegraph Harbour).
 - **`reciprocal`** — a partner club that hosts visiting RVYC members as guests, with its own
   visitor terms (free nights, fees, max stay, insurance minimum). Ships bundled with the
-  BC + Washington cruising-grounds tranche (18 clubs across South Vancouver Island, the Gulf
-  Islands, and the San Juans / Anacortes / Blaine).
+  BC + Washington coastal set (45 clubs): South Vancouver Island, the Gulf Islands, the
+  Vancouver-side crossing stops, the San Juans / Anacortes / Bellingham, and the Strait of
+  Juan de Fuca / North Puget Sound.
 
 ## Tools
 

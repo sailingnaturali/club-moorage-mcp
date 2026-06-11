@@ -13,7 +13,7 @@ def test_bundled_data_has_three_rvyc_outstations():
 def test_bundled_data_includes_reciprocal_clubs():
     s = Store.load()
     reciprocals = [o for o in s.outstations if o.relationship == "reciprocal"]
-    assert len(reciprocals) == 18                          # the BC+WA cruising-grounds tranche
+    assert len(reciprocals) == 45                          # BC+WA: charter core + crossing/Strait tranche
     nanaimo = s.get("Nanaimo Yacht Club")
     assert nanaimo.relationship == "reciprocal"
     assert nanaimo.club == "NYC"                            # the partner club's own code, not RVYC

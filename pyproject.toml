@@ -1,6 +1,6 @@
 [project]
 name = "outstations-mcp"
-version = "0.2.0"
+version = "0.3.0"
 description = "MCP server serving yacht-club moorage records — RVYC outstations + reciprocal partner clubs — with overnight-comfort ranking"
 readme = "README.md"
 license = "MIT"

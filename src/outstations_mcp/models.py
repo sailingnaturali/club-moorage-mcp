@@ -67,8 +67,8 @@ class Outstation:
     coords_approx: bool | None = None                    # coords from research, not the RVYC map pin
     locale: str | None = None                            # town/area label for reciprocals (cf. island)
     loa_note: str | None = None                          # non-LOA size limit (shallow channel, etc.)
-    power: bool | None = None                            # reciprocal dock has shore power (cf. shore_power str)
-    water: bool | None = None
+    power: bool | str | None = None                      # reciprocal dock power: True/False or a note ("$4/day")
+    water: bool | str | None = None
     vhf: str | None = None                               # reciprocal arrival hail (cf. vhf_channel)
     reservation_required: bool | None = None
     free_nights: int | None = None                       # reciprocal terms — these vary per club
