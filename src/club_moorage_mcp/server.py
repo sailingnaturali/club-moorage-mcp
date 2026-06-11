@@ -1,6 +1,6 @@
-"""outstations-mcp server. Exposes yacht-club outstation tools over stdio.
+"""club-moorage-mcp server. Exposes yacht-club outstation tools over stdio.
 
-Data directory comes from OUTSTATIONS_DATA_PATH (default: bundled package data).
+Data directory comes from CLUB_MOORAGE_DATA_PATH (default: bundled package data).
 """
 
 from __future__ import annotations
@@ -13,8 +13,8 @@ import mcp.types as types
 from mcp.server import Server
 from mcp.server.stdio import stdio_server
 
-from outstations_mcp import tools
-from outstations_mcp.store import Store
+from club_moorage_mcp import tools
+from club_moorage_mcp.store import Store
 
 logger = logging.getLogger(__name__)
 
@@ -123,7 +123,7 @@ def dispatch(store: Store, name: str, args: dict) -> dict:
 
 
 def build_server(store: Store) -> Server:
-    server = Server("outstations-mcp")
+    server = Server("club-moorage-mcp")
 
     @server.list_tools()
     async def _list_tools() -> list[types.Tool]:

@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from outstations_mcp.server import dispatch, tool_list
-from outstations_mcp.store import Store
+from club_moorage_mcp.server import dispatch, tool_list
+from club_moorage_mcp.store import Store
 
 FIXTURE = Path(__file__).parent / "fixtures" / "data"
 

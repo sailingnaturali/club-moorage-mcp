@@ -1,4 +1,4 @@
-from outstations_mcp.models import Outstation, Club
+from club_moorage_mcp.models import Outstation, Club
 
 OUTSTATION_MD = """---
 name: Near Cove

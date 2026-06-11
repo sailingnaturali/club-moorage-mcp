@@ -1,4 +1,4 @@
-from outstations_mcp.store import Store
+from club_moorage_mcp.store import Store
 
 
 def test_bundled_data_has_three_rvyc_outstations():

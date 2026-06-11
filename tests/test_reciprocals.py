@@ -1,7 +1,7 @@
 """Reciprocal-club records (relationship: reciprocal) loaded from bundled data."""
 
-from outstations_mcp.store import Store
-from outstations_mcp.tools import (
+from club_moorage_mcp.store import Store
+from club_moorage_mcp.tools import (
     find_outstations_near,
     get_outstation,
     list_outstations,

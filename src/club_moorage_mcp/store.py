@@ -6,12 +6,12 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 
-from outstations_mcp.models import Club, Outstation
+from club_moorage_mcp.models import Club, Outstation
 
 
 def data_path() -> Path:
-    """Data directory from OUTSTATIONS_DATA_PATH, default the bundled package data."""
-    env = os.environ.get("OUTSTATIONS_DATA_PATH")
+    """Data directory from CLUB_MOORAGE_DATA_PATH, default the bundled package data."""
+    env = os.environ.get("CLUB_MOORAGE_DATA_PATH")
     if env:
         return Path(env).expanduser()
     return Path(__file__).resolve().parent / "data"

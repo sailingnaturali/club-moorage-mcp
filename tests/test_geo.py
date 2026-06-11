@@ -1,5 +1,5 @@
-from outstations_mcp.geo import within_radius
-from outstations_mcp.models import Outstation
+from club_moorage_mcp.geo import within_radius
+from club_moorage_mcp.models import Outstation
 
 
 def _stations():

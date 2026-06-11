@@ -7,9 +7,9 @@ from dataclasses import asdict
 from pilotbook_mcp.models import Anchorage
 from pilotbook_mcp.scoring import rank_anchorages as _rank_anchorages
 
-from outstations_mcp.geo import within_radius
-from outstations_mcp.models import Outstation
-from outstations_mcp.store import Store
+from club_moorage_mcp.geo import within_radius
+from club_moorage_mcp.models import Outstation
+from club_moorage_mcp.store import Store
 
 
 def _matches_clubs(club: str, clubs: list[str] | None) -> bool:

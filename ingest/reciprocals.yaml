@@ -1,6 +1,6 @@
-# Staging source for outstations-mcp `relationship: reciprocal` records.
+# Staging source for club-moorage-mcp `relationship: reciprocal` records.
 # Canonical, reviewable data; build_records.py renders these to reciprocals/<slug>.md
-# in the outstations-mcp frontmatter+prose format. Provenance: references/reciprocal-moorage.md
+# in the club-moorage-mcp frontmatter+prose format. Provenance: references/reciprocal-moorage.md
 # (RVYC 2024 Annual + 2026-06-10 web research) and references/data/rvyc-reciprocal-map.kml (coords).
 # Every row is verify-before-arrival; club sites 403'd direct fetch, terms/fees are 2026.
 #

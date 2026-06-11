@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from outstations_mcp.store import Store
-from outstations_mcp.tools import list_outstations, find_outstations_near
+from club_moorage_mcp.store import Store
+from club_moorage_mcp.tools import list_outstations, find_outstations_near
 
 FIXTURE = Path(__file__).parent / "fixtures" / "data"
 
@@ -33,7 +33,7 @@ def test_find_outstations_near_sorted_with_distance():
     assert out["outstations"][0]["distance_nm"] <= out["outstations"][-1]["distance_nm"]
 
 
-from outstations_mcp.tools import get_outstation
+from club_moorage_mcp.tools import get_outstation
 
 
 def test_get_outstation_includes_record_prose_and_club_rules():
@@ -65,7 +65,7 @@ def test_get_outstation_unknown_club_omits_rules():
     assert out["club_rules"] is None
 
 
-from outstations_mcp.tools import rank_outstations
+from club_moorage_mcp.tools import rank_outstations
 
 
 def test_rank_outstations_ranks_only_comfort_bearing():

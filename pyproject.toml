@@ -1,6 +1,6 @@
 [project]
-name = "outstations-mcp"
-version = "0.3.0"
+name = "club-moorage-mcp"
+version = "0.4.0"
 description = "MCP server serving yacht-club moorage records — RVYC outstations + reciprocal partner clubs — with overnight-comfort ranking"
 readme = "README.md"
 license = "MIT"
@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-outstations-mcp = "outstations_mcp.server:main"
+club-moorage-mcp = "club_moorage_mcp.server:main"
 
 [build-system]
 requires = ["uv_build>=0.11.14,<0.12.0"]

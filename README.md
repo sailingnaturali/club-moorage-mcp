@@ -1,4 +1,4 @@
-# outstations-mcp
+# club-moorage-mcp
 
 MCP server serving yacht-club **moorage** records — size limits, rafting rules, booking
 processes, amenities, reciprocal terms, and overnight-comfort ranking. Each record carries
@@ -29,9 +29,9 @@ reciprocals (`available: false`) are omitted from `list`/`find` but still resolv
 
 ## Data
 
-Records are markdown (YAML frontmatter + prose) under `src/outstations_mcp/data/`
+Records are markdown (YAML frontmatter + prose) under `src/club_moorage_mcp/data/`
 (`clubs/`, `outstations/`, `reciprocals/`). Point at a different directory with
-`OUTSTATIONS_DATA_PATH`. `pilotbook_anchorage` cross-links a record to the nearest
+`CLUB_MOORAGE_DATA_PATH`. `pilotbook_anchorage` cross-links a record to the nearest
 pilot-book anchorage; the agent calls pilotbook-mcp's `get_anchorage` for seabed/depth.
 
 Reciprocal records are generated from `ingest/reciprocals.yaml` — edit the YAML, then
@@ -45,4 +45,4 @@ availability with the club before arrival.**
 
 ## Run the server
 
-    uv run outstations-mcp
+    uv run club-moorage-mcp

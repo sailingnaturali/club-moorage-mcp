@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render reciprocals.yaml -> ../src/outstations_mcp/data/reciprocals/<slug>.md.
+"""Render reciprocals.yaml -> ../src/club_moorage_mcp/data/reciprocals/<slug>.md.
 
 Reciprocal-club records (`relationship: reciprocal`) are too many to hand-author without
 drift, so the canonical data lives in reciprocals.yaml and this script emits conforming
@@ -18,10 +18,10 @@ import yaml
 
 HERE = Path(__file__).parent
 SRC = HERE / "reciprocals.yaml"
-OUT = HERE.parent / "src" / "outstations_mcp" / "data" / "reciprocals"
+OUT = HERE.parent / "src" / "club_moorage_mcp" / "data" / "reciprocals"
 
 # `relationship` distinguishes a reciprocal club from an RVYC-owned outstation; the rest
-# mirrors the outstations_mcp.models.Outstation schema.
+# mirrors the club_moorage_mcp.models.Outstation schema.
 ORDER = [
     "name", "club", "relationship", "lat", "lon", "coords_approx",
     "region", "locale", "country", "source_url",

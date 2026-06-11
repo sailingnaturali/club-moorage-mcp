@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pilotbook_mcp.geo import haversine_nm
 
-from outstations_mcp.models import Outstation
+from club_moorage_mcp.models import Outstation
 
 
 def within_radius(
