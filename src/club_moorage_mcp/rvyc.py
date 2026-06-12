@@ -9,6 +9,7 @@ API + login map: infrastructure/docs/rvyc-outstation-booking-api.md (private).
 
 from __future__ import annotations
 
+import os
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 
@@ -51,3 +52,22 @@ def parse_day_availability(body: dict, outstation: str, date: str) -> Availabili
         fully_booked=(free == 0),
         checked_at=_now_iso(),
     )
+
+
+def resolve_credentials() -> tuple[str, str] | None:
+    user = os.environ.get("RVYC_USERNAME")
+    pw = os.environ.get("RVYC_PASSWORD")
+    if user and pw:
+        return user, pw
+    return None
+
+
+def to_api_date(iso_date: str) -> str:
+    """'2026-06-20' -> '20260620'. The API 400s on any other format."""
+    dt = datetime.strptime(iso_date, "%Y-%m-%d")
+    return dt.strftime("%Y%m%d")
+
+
+def unavailable(outstation: str, date: str, reason: str) -> Availability:
+    """Availability with no live numbers, carrying a reason string."""
+    return Availability(outstation=outstation, date=date, reason=reason)
