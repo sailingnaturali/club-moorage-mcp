@@ -14,6 +14,7 @@ from mcp.server import Server
 from mcp.server.stdio import stdio_server
 
 from club_moorage_mcp import tools
+from club_moorage_mcp.rvyc import build_provider
 from club_moorage_mcp.store import Store
 
 logger = logging.getLogger(__name__)
@@ -41,6 +42,9 @@ _RELATIONSHIP = {
         "'reciprocal' = a partner club that hosts visiting RVYC members. Omit for both."
     ),
 }
+
+_DATE = {"type": "string",
+         "description": "Optional ISO date (YYYY-MM-DD). When set, RVYC reservable outstations are annotated with live slip availability for that day."}
 
 
 def tool_list() -> list[types.Tool]:
@@ -70,6 +74,7 @@ def tool_list() -> list[types.Tool]:
                     "radius_nm": {"type": "number", "description": "Search radius in nautical miles (default 20)."},
                     "clubs": _CLUBS,
                     "relationship": _RELATIONSHIP,
+                    "date": _DATE,
                 },
                 "required": ["lat", "lon"],
             },
@@ -81,6 +86,23 @@ def tool_list() -> list[types.Tool]:
                 "type": "object",
                 "properties": {"name": {"type": "string"}},
                 "required": ["name"],
+            },
+        ),
+        types.Tool(
+            name="check_availability",
+            description=(
+                "Live slip availability for an RVYC reservable outstation on a given date "
+                "(Long Harbour, Friday Harbor). Returns total/available slip counts and a "
+                "fully_booked flag, or a reason when the outstation is not online-bookable "
+                "(e.g. Telegraph Harbour) or no RVYC credentials are configured."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string", "description": "Outstation name, e.g. \"Long Harbour\"."},
+                    "date": _DATE,
+                },
+                "required": ["name", "date"],
             },
         ),
         types.Tool(
@@ -96,6 +118,7 @@ def tool_list() -> list[types.Tool]:
                 "properties": {
                     "names": {"type": "array", "items": {"type": "string"}},
                     "forecast": {"type": "array", "items": _FORECAST_STEP},
+                    "date": _DATE,
                 },
                 "required": ["names", "forecast"],
             },
@@ -103,7 +126,7 @@ def tool_list() -> list[types.Tool]:
     ]
 
 
-def dispatch(store: Store, name: str, args: dict) -> dict:
+def dispatch(store: Store, name: str, args: dict, provider=None) -> dict:
     """Route a tool call to its implementation. Shared by the server and tests."""
     if name == "list_moorage":
         return tools.list_moorage(
@@ -114,16 +137,25 @@ def dispatch(store: Store, name: str, args: dict) -> dict:
             store, lat=args["lat"], lon=args["lon"],
             radius_nm=args.get("radius_nm", 20.0), clubs=args.get("clubs"),
             relationship=args.get("relationship"),
+            date=args.get("date"), provider=provider,
         )
     if name == "get_moorage":
         return tools.get_moorage(store, name=args["name"])
     if name == "rank_moorage":
-        return tools.rank_moorage(store, names=args["names"], forecast=args.get("forecast", []))
+        return tools.rank_moorage(
+            store, names=args["names"], forecast=args.get("forecast", []),
+            date=args.get("date"), provider=provider,
+        )
+    if name == "check_availability":
+        return tools.check_availability(
+            store, name=args["name"], date=args["date"], provider=provider,
+        )
     raise ValueError(f"Unknown tool: {name}")
 
 
 def build_server(store: Store) -> Server:
     server = Server("club-moorage-mcp")
+    provider = build_provider()
 
     @server.list_tools()
     async def _list_tools() -> list[types.Tool]:
@@ -131,7 +163,7 @@ def build_server(store: Store) -> Server:
 
     @server.call_tool()
     async def _call_tool(name: str, arguments: dict | None) -> list[types.TextContent]:
-        result = dispatch(store, name, arguments or {})
+        result = dispatch(store, name, arguments or {}, provider=provider)
         return [types.TextContent(type="text", text=json.dumps(result, ensure_ascii=False))]
 
     return server

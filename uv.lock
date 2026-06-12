@@ -129,6 +129,7 @@ name = "club-moorage-mcp"
 version = "0.5.0"
 source = { editable = "." }
 dependencies = [
+    { name = "httpx" },
     { name = "mcp" },
     { name = "pilotbook-mcp" },
     { name = "pyyaml" },
@@ -142,6 +143,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "httpx", specifier = ">=0.27" },
     { name = "mcp", specifier = ">=1.27.1" },
     { name = "pilotbook-mcp", git = "https://github.com/sailingnaturali/pilotbook-mcp?tag=v0.1.7" },
     { name = "pyyaml", specifier = ">=6.0.2" },

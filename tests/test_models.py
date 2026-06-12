@@ -69,3 +69,24 @@ def test_club_roundtrip():
     assert c.reciprocal is False
     assert "three nights" in c.prose
     assert Club.from_markdown(c.to_markdown()) == c
+
+
+def test_moorage_round_trips_court_type_id():
+    from club_moorage_mcp.models import Moorage
+    md = (
+        "---\n"
+        "name: Long Harbour\n"
+        "club: RVYC\n"
+        "court_type_id: 783\n"
+        "---\n"
+        "body\n"
+    )
+    m = Moorage.from_markdown(md)
+    assert m.court_type_id == 783
+    assert "court_type_id: 783" in m.to_markdown()
+
+
+def test_moorage_court_type_id_defaults_none():
+    from club_moorage_mcp.models import Moorage
+    m = Moorage.from_markdown("---\nname: X\nclub: RVYC\n---\nbody\n")
+    assert m.court_type_id is None

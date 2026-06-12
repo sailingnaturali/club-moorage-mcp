@@ -18,6 +18,7 @@ potable_water: true
 pumpout: true
 amenities: [washrooms, laundry, garbage, pumpout]
 booking: rvyc-online
+court_type_id: 781
 confirmation_required: false
 last_updated: '2025'
 confidence: high

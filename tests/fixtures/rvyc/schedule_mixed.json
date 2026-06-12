@@ -1,0 +1,36 @@
+{
+  "retCode": 0,
+  "errorMessage": null,
+  "data": {
+    "schedule": [
+      {
+        "courtName": "LH Slip 01", "courtId": 11160, "externalID": 1,
+        "startTime": "2026/06/20 11:00", "endTime": "2026/06/20 23:00",
+        "blocks": [
+          {"courtId": 11160, "bookingId": 9110688, "status": "booked",
+           "startTime": "11:00 AM", "endTime": "11:00 PM", "isSelectable": false,
+           "players": ["REDACTED"], "start": "11:00:00", "end": "23:00:00"}
+        ]
+      },
+      {
+        "courtName": "LH Slip 02", "courtId": 11161, "externalID": 2,
+        "startTime": "2026/06/20 11:00", "endTime": "2026/06/20 23:00",
+        "blocks": [
+          {"courtId": 11161, "bookingId": 0, "status": "available",
+           "startTime": "11:00 AM", "endTime": "11:00 PM", "isSelectable": true,
+           "players": [], "start": "11:00:00", "end": "23:00:00"}
+        ]
+      },
+      {
+        "courtName": "LH Slip 03", "courtId": 11162, "externalID": 3,
+        "startTime": "2026/06/20 11:00", "endTime": "2026/06/20 23:00",
+        "blocks": [
+          {"courtId": 11162, "bookingId": 0, "status": "available",
+           "startTime": "11:00 AM", "endTime": "11:00 PM", "isSelectable": true,
+           "players": [], "start": "11:00:00", "end": "23:00:00"}
+        ]
+      }
+    ],
+    "bookings": []
+  }
+}
