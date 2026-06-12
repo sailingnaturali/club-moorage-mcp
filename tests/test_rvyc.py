@@ -87,3 +87,106 @@ def test_build_login_form_includes_hidden_and_credentials():
 def test_build_login_form_raises_without_username_field():
     with pytest.raises(ValueError):
         build_login_form("<html><form></form></html>", "u", "p")
+
+
+import httpx
+from club_moorage_mcp.rvyc import RvycClient
+
+BASE = "https://rvyc.bc.ca"
+
+
+def _login_html():
+    return (FIX / "login_form.html").read_text()
+
+
+def _client_with(handler, **kw):
+    transport = httpx.MockTransport(handler)
+    http = httpx.Client(base_url=BASE, transport=transport)
+    return RvycClient(http=http, username="u", password="p", **kw)
+
+
+def test_day_availability_logs_in_then_fetches():
+    calls = {"login": 0, "schedule": 0}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/login.aspx":
+            if request.method == "GET":
+                return httpx.Response(200, text=_login_html())
+            calls["login"] += 1
+            return httpx.Response(200, headers={"set-cookie": ".ASPXFORMSAUTH=TOKEN; path=/"})
+        if "GetSchedule" in request.url.path:
+            calls["schedule"] += 1
+            return httpx.Response(200, json=json.loads((FIX / "schedule_mixed.json").read_text()))
+        return httpx.Response(404)
+
+    client = _client_with(handler)
+    av = client.day_availability(783, "2026-06-20", outstation="Long Harbour")
+    assert av.available_slips == 2
+    assert calls["login"] == 1
+    assert calls["schedule"] == 1
+
+
+def test_day_availability_reuses_session_no_relogin():
+    logins = {"n": 0}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/login.aspx":
+            if request.method == "GET":
+                return httpx.Response(200, text=_login_html())
+            logins["n"] += 1
+            return httpx.Response(200, headers={"set-cookie": ".ASPXFORMSAUTH=TOKEN; path=/"})
+        return httpx.Response(200, json=json.loads((FIX / "schedule_mixed.json").read_text()))
+
+    client = _client_with(handler)
+    client.day_availability(783, "2026-06-20", outstation="Long Harbour")
+    client.day_availability(781, "2026-06-21", outstation="Friday Harbor")
+    assert logins["n"] == 1
+
+
+def test_day_availability_relogins_once_on_401():
+    state = {"authed": False, "logins": 0}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/login.aspx":
+            if request.method == "GET":
+                return httpx.Response(200, text=_login_html())
+            state["authed"] = True
+            state["logins"] += 1
+            return httpx.Response(200, headers={"set-cookie": ".ASPXFORMSAUTH=TOKEN; path=/"})
+        if not state["authed"]:
+            return httpx.Response(401, json={"message": "denied"})
+        return httpx.Response(200, json=json.loads((FIX / "schedule_mixed.json").read_text()))
+
+    client = _client_with(handler)
+    client._logged_in = True  # simulate cached-but-stale session
+    av = client.day_availability(783, "2026-06-20", outstation="Long Harbour")
+    assert av.available_slips == 2
+    assert state["logins"] == 1
+
+
+def test_day_availability_login_failure_degrades():
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/login.aspx":
+            if request.method == "GET":
+                return httpx.Response(200, text=_login_html())
+            return httpx.Response(200, text="Login failed")  # no auth cookie set
+        return httpx.Response(401, json={"message": "denied"})
+
+    client = _client_with(handler)
+    av = client.day_availability(783, "2026-06-20", outstation="Long Harbour")
+    assert av.total_slips is None
+    assert av.reason == "could not sign in to RVYC"
+
+
+def test_day_availability_bad_json_degrades():
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/login.aspx":
+            if request.method == "GET":
+                return httpx.Response(200, text=_login_html())
+            return httpx.Response(200, headers={"set-cookie": ".ASPXFORMSAUTH=TOKEN; path=/"})
+        return httpx.Response(200, text="<html>not json</html>")
+
+    client = _client_with(handler)
+    av = client.day_availability(783, "2026-06-20", outstation="Long Harbour")
+    assert av.total_slips is None
+    assert av.reason == "availability lookup failed"

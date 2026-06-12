@@ -9,10 +9,15 @@ API + login map: infrastructure/docs/rvyc-outstation-booking-api.md (private).
 
 from __future__ import annotations
 
+import logging
 import os
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from html.parser import HTMLParser
+
+import httpx
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -116,3 +121,63 @@ def build_login_form(login_html: str, username: str, password: str) -> dict[str,
     if button_key is None:
         raise ValueError("login form missing LoginButton control")
     return form
+
+
+_LOGIN_PATH = "/login.aspx"
+_SCHEDULE = "/api/v1/courts/GetSchedule/{court}/{date}/{length}"
+_DEFAULT_LENGTH = 60
+
+
+class RvycClient:
+    """Member-authenticated client for the RVYC court-booking API.
+
+    Construct with an httpx.Client (injected for tests) + credentials. All public
+    calls return an Availability and never raise on network/auth/parse failure.
+    """
+
+    def __init__(self, http, username: str, password: str, length: int = _DEFAULT_LENGTH) -> None:
+        self._http = http
+        self._username = username
+        self._password = password
+        self._length = length
+        self._logged_in = False
+
+    def _login(self) -> bool:
+        try:
+            page = self._http.get(_LOGIN_PATH)
+            form = build_login_form(page.text, self._username, self._password)
+            self._http.post(_LOGIN_PATH, data=form)
+        except (httpx.HTTPError, ValueError) as exc:
+            logger.warning("RVYC login error: %s", exc)
+            self._logged_in = False
+            return False
+        ok = any(c == ".ASPXFORMSAUTH" for c in self._http.cookies.keys())
+        self._logged_in = ok
+        if not ok:
+            logger.warning("RVYC login did not yield an auth cookie")
+        return ok
+
+    def day_availability(self, court_type_id: int, date: str, outstation: str) -> Availability:
+        api_date = to_api_date(date)
+        path = _SCHEDULE.format(court=court_type_id, date=api_date, length=self._length)
+        for attempt in (1, 2):
+            if not self._logged_in:
+                if not self._login():
+                    return unavailable(outstation, date, "could not sign in to RVYC")
+            try:
+                resp = self._http.get(path)
+            except httpx.HTTPError as exc:
+                logger.warning("RVYC schedule fetch error: %s", exc)
+                return unavailable(outstation, date, "availability lookup failed")
+            if resp.status_code == 401 and attempt == 1:
+                self._logged_in = False  # stale cookie; re-login and retry once
+                continue
+            if resp.status_code != 200:
+                logger.warning("RVYC schedule HTTP %s", resp.status_code)
+                return unavailable(outstation, date, "availability lookup failed")
+            try:
+                return parse_day_availability(resp.json(), outstation, date)
+            except (ValueError, KeyError, TypeError) as exc:
+                logger.warning("RVYC schedule parse error: %s", exc)
+                return unavailable(outstation, date, "availability lookup failed")
+        return unavailable(outstation, date, "could not sign in to RVYC")
