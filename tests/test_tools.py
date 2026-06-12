@@ -95,3 +95,44 @@ def test_rank_moorage_reason_reflects_anchoring_capability():
     reasons = {r["name"]: r["reason"] for r in out["not_ranked"]}
     assert "dock" not in reasons["Friday Harbor"].lower()      # it can anchor
     assert "dock" in reasons["Telegraph Harbour"].lower()      # truly dock-only
+
+
+from club_moorage_mcp.store import Store as _RealStore
+from club_moorage_mcp.tools import check_availability
+
+
+def _rvyc_store():
+    return _RealStore.load()  # bundled RVYC + reciprocal data
+
+
+def _stub_provider(court_type_id, date, outstation):
+    return {
+        "outstation": outstation, "date": date, "total_slips": 11,
+        "available_slips": 9, "fully_booked": False,
+        "checked_at": "2026-06-12T00:00:00+00:00", "reason": None,
+    }
+
+
+def test_check_availability_live_outstation():
+    out = check_availability(_rvyc_store(), name="Long Harbour", date="2026-06-20", provider=_stub_provider)
+    assert out["found"] is True
+    assert out["availability"]["available_slips"] == 9
+    assert out["availability"]["fully_booked"] is False
+
+
+def test_check_availability_telegraph_is_not_online_bookable():
+    out = check_availability(_rvyc_store(), name="Telegraph Harbour", date="2026-06-20", provider=_stub_provider)
+    assert out["found"] is True
+    assert out["availability"]["total_slips"] is None
+    assert "telegraphharbour.com" in out["availability"]["reason"]
+
+
+def test_check_availability_no_provider_reports_not_configured():
+    out = check_availability(_rvyc_store(), name="Long Harbour", date="2026-06-20", provider=None)
+    assert out["availability"]["reason"] == "live availability not configured"
+    assert out["availability"]["total_slips"] is None
+
+
+def test_check_availability_unknown_name():
+    out = check_availability(_rvyc_store(), name="Nowhere", date="2026-06-20", provider=_stub_provider)
+    assert out["found"] is False

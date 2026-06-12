@@ -9,6 +9,7 @@ from pilotbook_mcp.scoring import rank_anchorages as _rank_anchorages
 
 from club_moorage_mcp.geo import within_radius
 from club_moorage_mcp.models import Moorage
+from club_moorage_mcp.rvyc import unavailable
 from club_moorage_mcp.store import Store
 
 
@@ -107,6 +108,35 @@ def get_moorage(store: Store, name: str) -> dict:
             "rules": club.prose,
         }
     return {"found": True, "moorage": record, "club_rules": club_rules}
+
+
+def _availability_for(m: Moorage, date: str | None, provider) -> dict | None:
+    """Resolve an availability block for one moorage, or None if no date was asked.
+
+    - No date requested            -> None (tools omit the field)
+    - Not online-bookable          -> reason pointing at the right channel
+    - Live layer off (no provider) -> 'live availability not configured'
+    - Otherwise                    -> live numbers via the provider
+    """
+    if date is None:
+        return None
+    if m.court_type_id is None:
+        if m.booking_url:
+            reason = f"first-come-first-served; book via {m.booking_url}"
+        else:
+            reason = "no online reservation system for this moorage"
+        return unavailable(m.name, date, reason).as_dict()
+    if provider is None:
+        return unavailable(m.name, date, "live availability not configured").as_dict()
+    return provider(m.court_type_id, date, m.name)
+
+
+def check_availability(store: Store, name: str, date: str, provider=None) -> dict:
+    m = store.get(name)
+    if m is None:
+        return {"found": False, "name": name}
+    record = {k: v for k, v in asdict(m).items()}
+    return {"found": True, "moorage": record, "availability": _availability_for(m, date, provider)}
 
 
 def _not_ranked_reason(m: Moorage) -> str:
