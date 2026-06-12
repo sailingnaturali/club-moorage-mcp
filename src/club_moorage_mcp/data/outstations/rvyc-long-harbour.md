@@ -17,6 +17,7 @@ shore_power: 15/30A free
 potable_water: false
 amenities: [caretaker, kitchen, showers, dining, BBQ, patio, bikes, kayaks, dinghies, beach, swimming, shuttle-to-Ganges]
 booking: rvyc-online
+court_type_id: 783
 pilotbook_anchorage: Welbury Bay (Long Harbour)
 exposed_sectors: []
 holding: good

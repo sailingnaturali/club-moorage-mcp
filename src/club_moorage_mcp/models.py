@@ -59,6 +59,7 @@ class Moorage:
     swing_room: str | None = None                        # ample | adequate | limited | tight
     last_updated: str | None = None
     confidence: str | None = None
+    court_type_id: int | None = None                     # RVYC court-booking API id (783 Long Harbour, 781 Friday Harbor); only the reservable outstations
     # --- relationship + reciprocal-club fields ---------------------------------
     # `relationship` distinguishes an RVYC-owned outstation from a partner club that
     # hosts visiting RVYC members. None == "outstation" (the bundled RVYC three).
