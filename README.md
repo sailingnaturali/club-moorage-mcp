@@ -16,16 +16,29 @@ a `relationship`:
 ## Tools
 
 - `list_moorage(clubs?, relationship?)` — all moorage: location, coords, size limits.
-- `find_moorage_near(lat, lon, radius_nm=20, clubs?, relationship?)` — nearby moorage, nearest first.
+- `find_moorage_near(lat, lon, radius_nm=20, clubs?, relationship?, date?)` — nearby moorage, nearest first; annotates live availability when configured.
 - `get_moorage(name)` — full record + prose; for an outstation, also the club's general rules.
-- `rank_moorage(names, forecast)` — overnight-comfort rank for records that
+- `rank_moorage(names, forecast, date?)` — overnight-comfort rank for records that
   support anchoring/mooring; dock-only records are returned under `not_ranked`.
   Reuses pilotbook-mcp's scoring against a weather-mcp forecast.
+- `check_availability(name, date)` — live slip availability for RVYC reservable outstations; requires `RVYC_USERNAME`/`RVYC_PASSWORD`.
 
 The `clubs` filter is an optional list of club codes (e.g. `["RVYC"]`); omit for all clubs.
 The `relationship` filter is `"outstation"` or `"reciprocal"`; omit for both. The
 agent/context layer decides which clubs are relevant from who is aboard. Discontinued
 reciprocals (`available: false`) are omitted from `list`/`find` but still resolve by name.
+
+## Live outstation availability (optional)
+
+`check_availability(name, date)` reports live slip availability for RVYC's two
+reservable outstations (Long Harbour, Friday Harbor); `find_moorage_near` and
+`rank_moorage` take an optional `date` to annotate results the same way. Telegraph
+Harbour is first-come-first-served (booked via the marina) and reciprocal clubs have
+no online scheduler, so those return a reason instead of counts.
+
+This layer is **off by default**. Set `RVYC_USERNAME` and `RVYC_PASSWORD` (member
+credentials) to enable it; without them the tools return static data plus a
+"not configured" note. No credentials or member data are stored in this package.
 
 ## Data
 

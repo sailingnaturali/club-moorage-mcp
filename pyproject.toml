@@ -1,6 +1,6 @@
 [project]
 name = "club-moorage-mcp"
-version = "0.5.0"
+version = "0.6.0"
 description = "MCP server serving yacht-club moorage records — RVYC outstations + reciprocal partner clubs — with overnight-comfort ranking"
 readme = "README.md"
 license = "MIT"
