@@ -12,6 +12,7 @@ from __future__ import annotations
 import os
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
+from html.parser import HTMLParser
 
 
 @dataclass
@@ -71,3 +72,47 @@ def to_api_date(iso_date: str) -> str:
 def unavailable(outstation: str, date: str, reason: str) -> Availability:
     """Availability with no live numbers, carrying a reason string."""
     return Availability(outstation=outstation, date=date, reason=reason)
+
+
+class _InputCollector(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.inputs: list[dict[str, str]] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag == "input":
+            self.inputs.append({k: (v or "") for k, v in attrs})
+
+
+def build_login_form(login_html: str, username: str, password: str) -> dict[str, str]:
+    """Build the WebForms POST body from the login page HTML + credentials.
+
+    Echoes every hidden input, fills the UserName/Password controls, and includes
+    the submit button name. Raises ValueError if the username control is absent
+    (page shape changed or we were served something else).
+    """
+    parser = _InputCollector()
+    parser.feed(login_html)
+    form: dict[str, str] = {}
+    user_key = pass_key = button_key = None
+    for inp in parser.inputs:
+        name = inp.get("name")
+        if not name:
+            continue
+        itype = inp.get("type", "")
+        if name.endswith("$UserName"):
+            user_key = name
+        elif name.endswith("$Password"):
+            pass_key = name
+        elif name.endswith("$LoginButton"):
+            button_key = name
+            form[name] = inp.get("value", "Log in")
+        elif itype == "hidden":
+            form[name] = inp.get("value", "")
+    if user_key is None or pass_key is None:
+        raise ValueError("login form missing UserName/Password controls")
+    form[user_key] = username
+    form[pass_key] = password
+    if button_key is None:
+        raise ValueError("login form missing LoginButton control")
+    return form

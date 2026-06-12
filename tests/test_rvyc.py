@@ -66,3 +66,24 @@ def test_unavailable_builds_reason_only_availability():
     assert av.available_slips is None
     assert av.fully_booked is None
     assert av.reason == "first-come-first-served; book via telegraphharbour.com"
+
+
+from club_moorage_mcp.rvyc import build_login_form
+
+
+def test_build_login_form_includes_hidden_and_credentials():
+    html = (FIX / "login_form.html").read_text()
+    form = build_login_form(html, "myuser", "mypass")
+    assert form["__VIEWSTATE"] == "VS_TOKEN_ABC"
+    assert form["__VIEWSTATEGENERATOR"] == "GEN123"
+    assert form["__EVENTVALIDATION"] == "EV_TOKEN_XYZ"
+    user_key = next(k for k in form if k.endswith("$UserName"))
+    pass_key = next(k for k in form if k.endswith("$Password"))
+    assert form[user_key] == "myuser"
+    assert form[pass_key] == "mypass"
+    assert any(k.endswith("$LoginButton") for k in form)
+
+
+def test_build_login_form_raises_without_username_field():
+    with pytest.raises(ValueError):
+        build_login_form("<html><form></form></html>", "u", "p")
