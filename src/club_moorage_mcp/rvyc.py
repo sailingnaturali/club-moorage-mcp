@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import logging
 import os
+import time
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -181,3 +182,39 @@ class RvycClient:
                 logger.warning("RVYC schedule parse error: %s", exc)
                 return unavailable(outstation, date, "availability lookup failed")
         return unavailable(outstation, date, "could not sign in to RVYC")
+
+
+_CACHE_TTL_SECONDS = 300
+
+
+def build_provider(client: "RvycClient | None" = None):
+    """Production availability provider, or None when no credentials are configured.
+
+    Returns a callable (court_type_id, date, outstation) -> dict (Availability.as_dict()),
+    memoized per (court_type_id, date) for _CACHE_TTL_SECONDS.
+    """
+    if client is None:
+        creds = resolve_credentials()
+        if creds is None:
+            return None
+        http = httpx.Client(
+            base_url="https://rvyc.bc.ca",
+            timeout=20.0,
+            headers={"User-Agent": "club-moorage-mcp", "Accept": "application/json, text/plain, */*"},
+            follow_redirects=True,
+        )
+        client = RvycClient(http=http, username=creds[0], password=creds[1])
+
+    cache: dict[tuple[int, str], tuple[float, dict]] = {}
+
+    def provider(court_type_id: int, date: str, outstation: str) -> dict:
+        key = (court_type_id, date)
+        hit = cache.get(key)
+        now = time.monotonic()
+        if hit and now - hit[0] < _CACHE_TTL_SECONDS:
+            return hit[1]
+        result = client.day_availability(court_type_id, date, outstation=outstation).as_dict()
+        cache[key] = (now, result)
+        return result
+
+    return provider

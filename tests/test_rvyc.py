@@ -190,3 +190,34 @@ def test_day_availability_bad_json_degrades():
     av = client.day_availability(783, "2026-06-20", outstation="Long Harbour")
     assert av.total_slips is None
     assert av.reason == "availability lookup failed"
+
+
+from club_moorage_mcp.rvyc import build_provider
+
+
+def test_build_provider_returns_none_without_credentials(monkeypatch):
+    monkeypatch.delenv("RVYC_USERNAME", raising=False)
+    monkeypatch.delenv("RVYC_PASSWORD", raising=False)
+    assert build_provider() is None
+
+
+def test_provider_caches_by_court_and_date(monkeypatch):
+    monkeypatch.setenv("RVYC_USERNAME", "u")
+    monkeypatch.setenv("RVYC_PASSWORD", "p")
+    fetches = {"n": 0}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/login.aspx":
+            if request.method == "GET":
+                return httpx.Response(200, text=_login_html())
+            return httpx.Response(200, headers={"set-cookie": ".ASPXFORMSAUTH=TOKEN; path=/"})
+        fetches["n"] += 1
+        return httpx.Response(200, json=json.loads((FIX / "schedule_mixed.json").read_text()))
+
+    http = httpx.Client(base_url=BASE, transport=httpx.MockTransport(handler))
+    provider = build_provider(client=RvycClient(http=http, username="u", password="p"))
+    a = provider(783, "2026-06-20", "Long Harbour")
+    b = provider(783, "2026-06-20", "Long Harbour")
+    assert a["available_slips"] == 2
+    assert b == a
+    assert fetches["n"] == 1
