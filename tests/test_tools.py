@@ -136,3 +136,37 @@ def test_check_availability_no_provider_reports_not_configured():
 def test_check_availability_unknown_name():
     out = check_availability(_rvyc_store(), name="Nowhere", date="2026-06-20", provider=_stub_provider)
     assert out["found"] is False
+
+
+from club_moorage_mcp.tools import find_moorage_near as _find, rank_moorage as _rank
+
+
+def test_find_moorage_near_annotates_availability_when_date_given():
+    store = _rvyc_store()
+    out = _find(store, lat=48.86, lon=-123.46, radius_nm=80, date="2026-06-20", provider=_stub_provider)
+    lh = next(o for o in out["moorage"] if o["name"] == "Long Harbour")
+    assert lh["availability"]["available_slips"] == 9
+
+
+def test_find_moorage_near_no_date_omits_availability():
+    store = _rvyc_store()
+    out = _find(store, lat=48.86, lon=-123.46, radius_nm=80)
+    lh = next(o for o in out["moorage"] if o["name"] == "Long Harbour")
+    assert "availability" not in lh
+
+
+def test_rank_moorage_full_outstation_still_listed_and_flagged():
+    store = _rvyc_store()
+
+    def full_provider(court_type_id, date, outstation):
+        return {"outstation": outstation, "date": date, "total_slips": 11,
+                "available_slips": 0, "fully_booked": True,
+                "checked_at": "2026-06-12T00:00:00+00:00", "reason": None}
+
+    out = _rank(store, names=["Long Harbour"], forecast=[], date="2026-06-20", provider=full_provider)
+    # Long Harbour carries holding: good, so it lands in `ranked`; assert against the
+    # union so the test is robust regardless of which list it falls in. Availability
+    # is an annotation, so the full outstation is still present and flagged.
+    entries = out["ranked"] + out["not_ranked"]
+    lh = next(e for e in entries if e["name"] == "Long Harbour")
+    assert lh["availability"]["fully_booked"] is True

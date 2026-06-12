@@ -65,27 +65,30 @@ def list_moorage(
 def find_moorage_near(
     store: Store, lat: float, lon: float, radius_nm: float = 20.0,
     clubs: list[str] | None = None, relationship: str | None = None,
+    date: str | None = None, provider=None,
 ) -> dict:
     candidates = [m for m in store.records if _selectable(m, clubs, relationship)]
     hits = within_radius(candidates, lat, lon, radius_nm)
-    return {
-        "moorage": [
-            {
-                "name": m.name,
-                "club": m.club,
-                "relationship": _relationship(m),
-                "distance_nm": round(dist, 2),
-                "lat": m.lat,
-                "lon": m.lon,
-                "moorage": m.moorage,
-                "max_loa_ft": m.max_loa_ft,
-                "mooring_buoys": m.mooring_buoys,
-                "free_nights": m.free_nights,
-                "fits_vaan": m.fits_vaan,
-            }
-            for m, dist in hits
-        ]
-    }
+    out = []
+    for m, dist in hits:
+        row = {
+            "name": m.name,
+            "club": m.club,
+            "relationship": _relationship(m),
+            "distance_nm": round(dist, 2),
+            "lat": m.lat,
+            "lon": m.lon,
+            "moorage": m.moorage,
+            "max_loa_ft": m.max_loa_ft,
+            "mooring_buoys": m.mooring_buoys,
+            "free_nights": m.free_nights,
+            "fits_vaan": m.fits_vaan,
+        }
+        av = _availability_for(m, date, provider)
+        if av is not None:
+            row["availability"] = av
+        out.append(row)
+    return {"moorage": out}
 
 
 def get_moorage(store: Store, name: str) -> dict:
@@ -145,7 +148,7 @@ def _not_ranked_reason(m: Moorage) -> str:
     return "dock moorage — not an anchoring/comfort decision"
 
 
-def rank_moorage(store: Store, names: list[str], forecast: list[dict]) -> dict:
+def rank_moorage(store: Store, names: list[str], forecast: list[dict], date: str | None = None, provider=None) -> dict:
     rankable: list[Anchorage] = []
     not_ranked: list[dict] = []
     unknown: list[str] = []
@@ -165,4 +168,19 @@ def rank_moorage(store: Store, names: list[str], forecast: list[dict]) -> dict:
                 )
             )
     ranked = _rank_anchorages(rankable, forecast) if rankable else []
+
+    if date is not None:
+        by_name = {n: store.get(n) for n in names}
+
+        def _annotate(entry: dict) -> dict:
+            m = by_name.get(entry["name"])
+            if m is not None:
+                av = _availability_for(m, date, provider)
+                if av is not None:
+                    entry = {**entry, "availability": av}
+            return entry
+
+        ranked = [_annotate(e) for e in ranked]
+        not_ranked = [_annotate(e) for e in not_ranked]
+
     return {"ranked": ranked, "not_ranked": not_ranked, "unknown": unknown}
