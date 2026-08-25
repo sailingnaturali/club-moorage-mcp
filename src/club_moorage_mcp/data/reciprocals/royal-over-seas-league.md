@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 51.506051
 lon: -0.14096
 region: United Kingdom
-locale: UK
+locale: London
 country: GB
 address: Over-Seas House, Park Pl, St James's St, St. James's, London SW1A 1LR, UK
 source_url: https://www.rosl.org.uk

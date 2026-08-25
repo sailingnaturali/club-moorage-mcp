@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: -27.46059
 lon: 153.190422
 region: Australia
-locale: Australia
+locale: Manly QLD
 country: AU
 address: 578 Royal Esplanade, Manly QLD 4179, Australia
 source_url: https://www.rqys.com.au

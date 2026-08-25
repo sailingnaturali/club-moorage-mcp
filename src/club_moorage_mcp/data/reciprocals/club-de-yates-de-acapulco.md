@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 16.835489
 lon: -99.903888
 region: Mexico
-locale: Mexico
+locale: Acapulco, Gro.
 country: MX
 address: Avenida Gran Vía Tropical &, Tambuco S/N, Las Playas, 39390 Acapulco de Juárez, Gro., Mexico
 source_url: https://www.clubdeyatesdeacapulco.com

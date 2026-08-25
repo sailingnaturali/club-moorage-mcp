@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 51.509695
 lon: -0.09289
 region: United Kingdom
-locale: UK
+locale: London
 country: GB
 address: Bell Wharf Lane, Upper Thames St, London EC4R 3TB, UK
 source_url: https://www.littleshipclub.co.uk

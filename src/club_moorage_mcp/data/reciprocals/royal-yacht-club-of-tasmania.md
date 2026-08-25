@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: -42.897888
 lon: 147.332357
 region: Australia
-locale: Australia
+locale: Sandy Bay TAS
 country: AU
 address: Marieville Esplanade, Sandy Bay TAS 7005, Australia
 source_url: https://www.ryct.org.au

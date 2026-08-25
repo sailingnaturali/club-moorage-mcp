@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 51.502313
 lon: -0.159125
 region: United Kingdom
-locale: UK
+locale: London
 country: GB
 address: 60 Knightsbridge, London SW1X 7LF, UK
 source_url: https://www.royalthames.com

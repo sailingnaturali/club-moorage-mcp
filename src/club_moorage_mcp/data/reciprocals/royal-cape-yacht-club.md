@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: -33.920656
 lon: 18.443026
 region: South Africa
-locale: South Africa
+locale: Cape Town
 country: ZA
 address: Duncan Road, Table Bay Harbour, Foreshore, Cape Town, 8000, South Africa
 source_url: https://www.rcyc.co.za

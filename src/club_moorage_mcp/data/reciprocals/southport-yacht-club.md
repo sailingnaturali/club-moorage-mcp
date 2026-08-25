@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: -27.973638
 lon: 153.426712
 region: Australia
-locale: Australia
+locale: Main Beach QLD
 country: AU
 address: 1 MacArthur Parade, Main Beach QLD 4217, Australia
 source_url: https://www.southportyachtclub.com.au

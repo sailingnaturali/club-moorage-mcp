@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 17.902361
 lon: -77.101333
 region: Caribbean
-locale: Kingston, Jamaica
+locale: Kingston
 country: JM
 address: 5th St, Kingston, Jamaica
 available: true

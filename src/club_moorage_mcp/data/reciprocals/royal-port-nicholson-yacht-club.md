@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: -41.291451
 lon: 174.787912
 region: New Zealand
-locale: New Zealand
+locale: Wellington
 country: NZ
 address: 103 Oriental Parade, Oriental Bay, Wellington 6011, New Zealand
 source_url: https://www.rpnyc.org.nz

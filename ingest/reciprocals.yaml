@@ -1955,7 +1955,7 @@ records:
     lat: 16.835489
     lon: -99.903888
     region: Mexico
-    locale: Mexico
+    locale: Acapulco, Gro.
     country: MX
     address: Avenida Gran Vía Tropical &, Tambuco S/N, Las Playas, 39390 Acapulco de Juárez, Gro., Mexico
     source_url: https://www.clubdeyatesdeacapulco.com
@@ -1991,7 +1991,7 @@ records:
     lat: 32.291118
     lon: -64.787324
     region: Bermuda
-    locale: Bermuda
+    locale: Hamilton
     country: BM
     address: Hamilton, Bermuda
     source_url: https://www.rbyc.bm
@@ -2007,7 +2007,7 @@ records:
     club: WIYC
     lat: 17.902361
     lon: -77.101333
-    locale: Kingston, Jamaica
+    locale: Kingston
     address: 5th St, Kingston, Jamaica
     phone: +1 888-311-8812
     confidence: low
@@ -2055,6 +2055,24 @@ records:
     summary: Canadian reciprocal club on RVYC's reciprocal-privileges list. Position and contact come
       from RVYC's own reciprocal map; guest-moorage availability, size limits and fees are unresearched
       — contact the club before planning a stop.
+  - name: Queen City Yacht Club (Toronto)
+    club: QCYCTO
+    lat: 43.630252
+    lon: -79.358224
+    region: Great Lakes
+    locale: Toronto, ON
+    country: CA
+    address: Seneca Ave, Toronto, ON M5J 2A1
+    source_url: https://www.qcyc.ca
+    phone: +1 416-203-0929
+    confidence: low
+    last_updated: '2026-08-25'
+    flags:
+    - Listed in the RVYC 2024 Annual; visitor moorage terms not researched — call ahead
+    - Distinct from Seattle's Queen City YC (QCYC) — same name, different club
+    summary: Canadian reciprocal club on RVYC's reciprocal-privileges list. Position and
+      contact come from RVYC's own reciprocal map; guest-moorage availability, size limits
+      and fees are unresearched — contact the club before planning a stop.
   - name: Royal Canadian Yacht Club
     club: RCYC
     lat: 43.668713
@@ -2195,27 +2213,30 @@ records:
   # ---------- United Kingdom + Ireland ----------
   - name: Channel Islands Yacht Club
     club: CIYC
-    lat: 49.457949
-    lon: -2.534883
-    region: United Kingdom
-    locale: Guernsey
-    country: GB
-    address: St Peter Port Guernsey GY1 1WL, Guernsey GY1 3HJ, Guernsey
-    source_url: https://www.rciyc.com
-    phone: +44 1481 725500
+    lat: 34.163646
+    lon: -119.226580
+    coords_approx: true
+    region: California
+    locale: Oxnard, CA
+    country: US
+    address: 4100 Harbor Blvd, Oxnard, CA 93035
+    phone: +1 805-985-2492
     confidence: low
     last_updated: '2026-08-25'
     flags:
     - Listed in the RVYC 2024 Annual; visitor moorage terms not researched — call ahead
-    summary: Offshore reciprocal club on RVYC's reciprocal-privileges list. Position and contact come
-      from RVYC's own reciprocal map; guest-moorage availability, size limits and fees are unresearched
-      — contact the club before planning a stop.
+    - Not pinned on RVYC's map (which pins Royal Channel Islands YC, Guernsey, instead) —
+      coords geocoded from the annual's address
+    summary: Offshore reciprocal club on RVYC's reciprocal-privileges list. Channel Islands
+      Harbor, Oxnard — not to be confused with the Royal Channel Islands YC in Guernsey.
+      Guest-moorage availability, size limits and fees are unresearched — contact the club
+      before planning a stop.
   - name: Little Ship Club
     club: LSC
     lat: 51.509695
     lon: -0.09289
     region: United Kingdom
-    locale: UK
+    locale: London
     country: GB
     address: Bell Wharf Lane, Upper Thames St, London EC4R 3TB, UK
     source_url: https://www.littleshipclub.co.uk
@@ -2232,7 +2253,7 @@ records:
     lat: 50.754354
     lon: -1.528573
     region: United Kingdom
-    locale: UK
+    locale: Lymington
     country: GB
     address: Bath Rd, Lymington SO41 3SE, UK
     source_url: https://www.rlymyc.org.uk
@@ -2266,7 +2287,7 @@ records:
     lat: 51.804382
     lon: -8.303795
     region: Ireland
-    locale: Ireland
+    locale: Crosshaven, Co. Cork
     country: IE
     address: 4-12 Lower Rd, Knocknagore, Co. Cork, Ireland
     source_url: https://www.royalcork.com
@@ -2283,7 +2304,7 @@ records:
     lat: 50.159525
     lon: -5.073862
     region: United Kingdom
-    locale: UK
+    locale: Falmouth
     country: GB
     address: Greenbank, Falmouth TR11 2SP, UK
     source_url: https://www.royalcornwallyachtclub.org
@@ -2300,7 +2321,7 @@ records:
     lat: 52.472077
     lon: 1.749896
     region: United Kingdom
-    locale: UK
+    locale: Lowestoft
     country: GB
     address: Royal Plain, Lowestoft NR33 0AQ, UK
     source_url: https://www.rnsyc.net
@@ -2317,7 +2338,7 @@ records:
     lat: 56.017759
     lon: -4.783366
     region: United Kingdom
-    locale: UK
+    locale: Helensburgh
     country: GB
     address: The Clubhouse, Gareloch Rd, Rhu, Helensburgh G84 8NG, UK
     source_url: https://www.rncyc.com
@@ -2334,7 +2355,7 @@ records:
     lat: 51.505954
     lon: -0.140676
     region: United Kingdom
-    locale: UK
+    locale: London
     country: GB
     address: 20 St James's Pl, St. James's, London SW1A 1NN, UK
     source_url: https://www.rorc.org
@@ -2351,7 +2372,7 @@ records:
     lat: 51.506051
     lon: -0.14096
     region: United Kingdom
-    locale: UK
+    locale: London
     country: GB
     address: Over-Seas House, Park Pl, St James's St, St. James's, London SW1A 1LR, UK
     source_url: https://www.rosl.org.uk
@@ -2368,7 +2389,7 @@ records:
     lat: 51.502313
     lon: -0.159125
     region: United Kingdom
-    locale: UK
+    locale: London
     country: GB
     address: 60 Knightsbridge, London SW1X 7LF, UK
     source_url: https://www.royalthames.com
@@ -2385,7 +2406,7 @@ records:
     lat: 50.733611
     lon: -1.214722
     region: United Kingdom
-    locale: UK
+    locale: Ryde
     country: GB
     address: 91 Fishbourne Ln, Ryde PO33 4EU, UK
     source_url: https://www.rvyc.org.uk
@@ -2402,7 +2423,7 @@ records:
     lat: 50.364613
     lon: -4.129128
     region: United Kingdom
-    locale: UK
+    locale: Plymouth
     country: GB
     address: Queen Annes Battery, Plymouth PL4 0TW, UK
     source_url: https://www.rwyc.org
@@ -2416,29 +2437,31 @@ records:
       — contact the club before planning a stop.
   - name: Royal Yacht Club of Victoria
     club: RYCV
-    lat: 50.733611
-    lon: -1.214722
-    region: United Kingdom
-    locale: UK
-    country: GB
-    address: 91 Fishbourne Ln, Ryde PO33 4EU, UK
-    source_url: https://www.rvyc.org.uk
-    phone: +44 1983 882325
+    lat: -37.863170
+    lon: 144.905467
+    coords_approx: true
+    region: Australia
+    locale: Williamstown, VIC
+    country: AU
+    address: 120 Nelson Place, Williamstown, Victoria 3016
+    source_url: https://rycv.com.au
+    phone: +61 3 9397 1277
     confidence: low
     last_updated: '2026-08-25'
     flags:
     - Listed in the RVYC 2024 Annual; visitor moorage terms not researched — call ahead
-    summary: Offshore Royal yacht club on RVYC's reciprocal-privileges list. Position and contact come
-      from RVYC's own reciprocal map; guest-moorage availability, size limits and fees are unresearched
-      — contact the club before planning a stop.
-
-  # ---------- Australia + New Zealand ----------
+    - Not pinned on RVYC's map (which pins Royal Victoria YC, Isle of Wight, instead) —
+      coords geocoded from the annual's address
+    summary: Offshore Royal yacht club on RVYC's reciprocal-privileges list. Williamstown,
+      Melbourne — not to be confused with the Royal Victoria YC on the Isle of Wight.
+      Guest-moorage availability, size limits and fees are unresearched — contact the club
+      before planning a stop.
   - name: Cruising Yacht Club of Australia
     club: CYCA
     lat: -33.874186
     lon: 151.233939
     region: Australia
-    locale: Australia
+    locale: Darling Point NSW
     country: AU
     address: 1 New Beach Rd, Darling Point NSW 2027, Australia
     source_url: https://www.cyca.com.au
@@ -2455,7 +2478,7 @@ records:
     lat: -41.291451
     lon: 174.787912
     region: New Zealand
-    locale: New Zealand
+    locale: Wellington
     country: NZ
     address: 103 Oriental Parade, Oriental Bay, Wellington 6011, New Zealand
     source_url: https://www.rpnyc.org.nz
@@ -2472,7 +2495,7 @@ records:
     lat: -33.656335
     lon: 151.30542
     region: Australia
-    locale: Australia
+    locale: Newport NSW
     country: AU
     address: 16 Mitala St, Newport NSW 2106, Australia
     source_url: https://www.rpayc.com.au
@@ -2489,7 +2512,7 @@ records:
     lat: -27.46059
     lon: 153.190422
     region: Australia
-    locale: Australia
+    locale: Manly QLD
     country: AU
     address: 578 Royal Esplanade, Manly QLD 4179, Australia
     source_url: https://www.rqys.com.au
@@ -2506,7 +2529,7 @@ records:
     lat: -34.775644
     lon: 138.488722
     region: Australia
-    locale: Australia
+    locale: Outer Harbor SA
     country: AU
     address: 750 Victoria Rd, Outer Harbor SA 5018, Australia
     source_url: https://www.rsays.com.au
@@ -2523,7 +2546,7 @@ records:
     lat: -42.897888
     lon: 147.332357
     region: Australia
-    locale: Australia
+    locale: Sandy Bay TAS
     country: AU
     address: Marieville Esplanade, Sandy Bay TAS 7005, Australia
     source_url: https://www.ryct.org.au
@@ -2540,7 +2563,7 @@ records:
     lat: -27.973638
     lon: 153.426712
     region: Australia
-    locale: Australia
+    locale: Main Beach QLD
     country: AU
     address: 1 MacArthur Parade, Main Beach QLD 4217, Australia
     source_url: https://www.southportyachtclub.com.au
@@ -2559,7 +2582,7 @@ records:
     lat: 18.92353
     lon: 72.833493
     region: India
-    locale: India
+    locale: Mumbai
     country: IN
     address: Chhatrapati Shivaji Maharaj Marg, near Gateway of India, Apollo Bandar, Colaba, Mumbai, Maharashtra
       400001, India
@@ -2577,7 +2600,7 @@ records:
     lat: -33.920656
     lon: 18.443026
     region: South Africa
-    locale: South Africa
+    locale: Cape Town
     country: ZA
     address: Duncan Road, Table Bay Harbour, Foreshore, Cape Town, 8000, South Africa
     source_url: https://www.rcyc.co.za
@@ -2594,7 +2617,7 @@ records:
     lat: 22.284477
     lon: 114.182225
     region: Hong Kong
-    locale: Hong Kong
+    locale: Causeway Bay
     country: HK
     address: Kellett Island, Causeway Bay, Hong Kong
     source_url: https://www.rhkyc.org.hk

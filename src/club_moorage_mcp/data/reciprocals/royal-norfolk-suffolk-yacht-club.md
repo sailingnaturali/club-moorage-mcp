@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 52.472077
 lon: 1.749896
 region: United Kingdom
-locale: UK
+locale: Lowestoft
 country: GB
 address: Royal Plain, Lowestoft NR33 0AQ, UK
 source_url: https://www.rnsyc.net

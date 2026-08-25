@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 51.804382
 lon: -8.303795
 region: Ireland
-locale: Ireland
+locale: Crosshaven, Co. Cork
 country: IE
 address: 4-12 Lower Rd, Knocknagore, Co. Cork, Ireland
 source_url: https://www.royalcork.com

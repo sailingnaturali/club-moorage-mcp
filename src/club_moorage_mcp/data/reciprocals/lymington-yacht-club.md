@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 50.754354
 lon: -1.528573
 region: United Kingdom
-locale: UK
+locale: Lymington
 country: GB
 address: Bath Rd, Lymington SO41 3SE, UK
 source_url: https://www.rlymyc.org.uk

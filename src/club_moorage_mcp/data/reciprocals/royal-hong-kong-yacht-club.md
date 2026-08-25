@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 22.284477
 lon: 114.182225
 region: Hong Kong
-locale: Hong Kong
+locale: Causeway Bay
 country: HK
 address: Kellett Island, Causeway Bay, Hong Kong
 source_url: https://www.rhkyc.org.hk

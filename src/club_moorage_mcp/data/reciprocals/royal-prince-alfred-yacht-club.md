@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: -33.656335
 lon: 151.30542
 region: Australia
-locale: Australia
+locale: Newport NSW
 country: AU
 address: 16 Mitala St, Newport NSW 2106, Australia
 source_url: https://www.rpayc.com.au

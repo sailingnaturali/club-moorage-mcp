@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 56.017759
 lon: -4.783366
 region: United Kingdom
-locale: UK
+locale: Helensburgh
 country: GB
 address: The Clubhouse, Gareloch Rd, Rhu, Helensburgh G84 8NG, UK
 source_url: https://www.rncyc.com

@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 50.159525
 lon: -5.073862
 region: United Kingdom
-locale: UK
+locale: Falmouth
 country: GB
 address: Greenbank, Falmouth TR11 2SP, UK
 source_url: https://www.royalcornwallyachtclub.org

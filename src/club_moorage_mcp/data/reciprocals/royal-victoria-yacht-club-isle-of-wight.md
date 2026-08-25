@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 50.733611
 lon: -1.214722
 region: United Kingdom
-locale: UK
+locale: Ryde
 country: GB
 address: 91 Fishbourne Ln, Ryde PO33 4EU, UK
 source_url: https://www.rvyc.org.uk

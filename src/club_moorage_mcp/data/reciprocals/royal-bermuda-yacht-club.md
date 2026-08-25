@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 32.291118
 lon: -64.787324
 region: Bermuda
-locale: Bermuda
+locale: Hamilton
 country: BM
 address: Hamilton, Bermuda
 source_url: https://www.rbyc.bm

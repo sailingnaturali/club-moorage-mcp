@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 50.364613
 lon: -4.129128
 region: United Kingdom
-locale: UK
+locale: Plymouth
 country: GB
 address: Queen Annes Battery, Plymouth PL4 0TW, UK
 source_url: https://www.rwyc.org

@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 51.505954
 lon: -0.140676
 region: United Kingdom
-locale: UK
+locale: London
 country: GB
 address: 20 St James's Pl, St. James's, London SW1A 1NN, UK
 source_url: https://www.rorc.org

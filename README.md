@@ -9,12 +9,12 @@ a `relationship`:
   Telegraph Harbour).
 - **`reciprocal`** — a partner club that hosts visiting RVYC members as guests, with its own
   visitor terms (free nights, fees, max stay, insurance minimum). Ships bundled with the
-  **whole RVYC reciprocal list — 137 clubs, worldwide**, in two depths:
+  **whole RVYC reciprocal list — 138 clubs, worldwide**, in two depths:
   - **Researched** (`confidence` med/high, 45 clubs) — the BC + Washington coastal set the
     boat actually cruises: South Vancouver Island, the Gulf Islands, the Vancouver-side
     crossing stops, the San Juans / Anacortes / Bellingham, the Strait of Juan de Fuca /
     North Puget Sound. Per-club terms, fees, size limits and Vaan fit.
-  - **Listed only** (`confidence: low`, 92 clubs) — everything else on the list: California,
+  - **Listed only** (`confidence: low`, 93 clubs) — everything else on the list: California,
     Hawaii, Mexico, Bermuda, the Caribbean, eastern Canada, the UK, Australia/NZ and the
     rest. Position, address, phone and website only, so a passage plan can ask "whose club
     is in this port?" — guest-moorage terms are **not** researched and every record says so.

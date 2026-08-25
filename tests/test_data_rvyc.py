@@ -13,7 +13,7 @@ def test_bundled_data_has_three_rvyc_outstations():
 def test_bundled_data_includes_reciprocal_clubs():
     s = Store.load()
     reciprocals = [o for o in s.records if o.relationship == "reciprocal"]
-    assert len(reciprocals) == 137                         # the full RVYC 2024 Annual list
+    assert len(reciprocals) == 138                         # the full RVYC 2024 Annual list
     nanaimo = s.get("Nanaimo Yacht Club")
     assert nanaimo.relationship == "reciprocal"
     assert nanaimo.club == "NYC"                            # the partner club's own code, not RVYC
@@ -37,6 +37,23 @@ def test_every_reciprocal_is_mappable_and_uniquely_coded():
     assert [o.name for o in s.records if o.lat is None or o.lon is None] == []
     codes = [o.club for o in s.records if o.relationship == "reciprocal"]
     assert len(codes) == len(set(codes))
+
+
+def test_no_two_clubs_share_a_pin():
+    # Two clubs on one pin means a record inherited someone else's position — how Channel
+    # Islands YC (Oxnard) landed on Royal Channel Islands YC's Guernsey pin. The one real
+    # pair: Roche Harbor YC's reciprocal moorage IS Bremerton Marina, Bremerton YC's dock.
+    s = Store.load()
+    seen: dict[tuple, str] = {}
+    shared = []
+    for m in s.records:
+        if m.lat is None:
+            continue
+        key = (round(m.lat, 4), round(m.lon, 4))
+        if key in seen:
+            shared.append(tuple(sorted((seen[key], m.name))))
+        seen[key] = m.name
+    assert shared == [("Bremerton Yacht Club", "Roche Harbor Yacht Club")]
 
 
 def test_long_harbour_is_overnight_capable():

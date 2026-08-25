@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: -34.775644
 lon: 138.488722
 region: Australia
-locale: Australia
+locale: Outer Harbor SA
 country: AU
 address: 750 Victoria Rd, Outer Harbor SA 5018, Australia
 source_url: https://www.rsays.com.au

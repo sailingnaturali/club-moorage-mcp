@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: 18.92353
 lon: 72.833493
 region: India
-locale: India
+locale: Mumbai
 country: IN
 address: Chhatrapati Shivaji Maharaj Marg, near Gateway of India, Apollo Bandar, Colaba, Mumbai, Maharashtra
   400001, India

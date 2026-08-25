@@ -5,7 +5,7 @@ relationship: reciprocal
 lat: -33.874186
 lon: 151.233939
 region: Australia
-locale: Australia
+locale: Darling Point NSW
 country: AU
 address: 1 New Beach Rd, Darling Point NSW 2027, Australia
 source_url: https://www.cyca.com.au
