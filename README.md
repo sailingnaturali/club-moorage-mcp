@@ -47,6 +47,11 @@ Records are markdown (YAML frontmatter + prose) under `src/club_moorage_mcp/data
 `CLUB_MOORAGE_DATA_PATH`. `pilotbook_anchorage` cross-links a record to the nearest
 pilot-book anchorage; the agent calls pilotbook-mcp's `get_anchorage` for seabed/depth.
 
+[**moorage.geojson**](moorage.geojson) is a generated map of every bundled record —
+GitHub renders it inline (blue = outstation, green = reciprocal). Regenerate after a data
+change with `uv run python ingest/build_geojson.py`; `--check` fails on drift, and
+`tests/test_geojson.py` does the same in CI.
+
 Reciprocal records are generated from `ingest/reciprocals.yaml` — edit the YAML, then
 `uv run python ingest/build_records.py`. The three RVYC outstations are hand-authored.
 Per-club reciprocal terms were researched from secondary sources; **verify fees, LOA, and

@@ -1,0 +1,916 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.605,
+          48.5168
+        ]
+      },
+      "properties": {
+        "name": "Anacortes Yacht Club",
+        "club": "AYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 50,
+        "source_url": "https://anacortesyachtclub.org/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.505,
+          48.7576
+        ]
+      },
+      "properties": {
+        "name": "Bellingham Yacht Club",
+        "club": "BELYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.0928,
+          49.3134
+        ]
+      },
+      "properties": {
+        "name": "Burrard Yacht Club",
+        "club": "BURYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 2,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4307,
+          48.4392
+        ]
+      },
+      "properties": {
+        "name": "Canadian Forces Sailing Association",
+        "club": "CFSA",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 1,
+        "source_url": "https://www.cfsaesq.ca/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4178,
+          48.6713
+        ]
+      },
+      "properties": {
+        "name": "Capital City Yacht Club",
+        "club": "CCYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 2,
+        "source_url": "https://ccyc.ca/reciprocal/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.508,
+          48.752
+        ]
+      },
+      "properties": {
+        "name": "Corinthian Yacht Club of Bellingham",
+        "club": "CYCB",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 38,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4037,
+          47.6855
+        ]
+      },
+      "properties": {
+        "name": "Corinthian Yacht Club of Seattle",
+        "club": "CYCS",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9488,
+          49.3273
+        ]
+      },
+      "properties": {
+        "name": "Deep Cove Yacht Club",
+        "club": "DCYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 2,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5136,
+          47.6158
+        ]
+      },
+      "properties": {
+        "name": "Eagle Harbor Yacht Club",
+        "club": "EHYCB",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 200,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2701,
+          49.354
+        ]
+      },
+      "properties": {
+        "name": "Eagle Harbour Yacht Club",
+        "club": "EHYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 38,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3889,
+          47.8089
+        ]
+      },
+      "properties": {
+        "name": "Edmonds Yacht Club",
+        "club": "EDYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2211,
+          47.9951
+        ]
+      },
+      "properties": {
+        "name": "Everett Yacht Club",
+        "club": "EVYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 50,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1327,
+          49.2733
+        ]
+      },
+      "properties": {
+        "name": "False Creek Yacht Club",
+        "club": "FCYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 85,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6868,
+          48.495
+        ]
+      },
+      "properties": {
+        "name": "Fidalgo Yacht Club",
+        "club": "FIDYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 2,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.67,
+          48.49
+        ]
+      },
+      "properties": {
+        "name": "Flounder Bay Yacht Club",
+        "club": "FBYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 44,
+        "free_nights": 0,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.0147,
+          48.5353
+        ]
+      },
+      "properties": {
+        "name": "Friday Harbor",
+        "club": "RVYC",
+        "relationship": "outstation",
+        "moorage": "dock, anchoring",
+        "max_loa_ft": 50,
+        "source_url": "https://rvyc.bc.ca/On_the_Water/Outstations",
+        "marker-color": "#1f78b4",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4978,
+          47.7969
+        ]
+      },
+      "properties": {
+        "name": "Kingston Cove Yacht Club",
+        "club": "KCYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 1,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.0833,
+          49.0953
+        ]
+      },
+      "properties": {
+        "name": "Ladner Yacht Club",
+        "club": "LADYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 50,
+        "free_nights": 2,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.819,
+          48.992
+        ]
+      },
+      "properties": {
+        "name": "Ladysmith Yacht Club",
+        "club": "LYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 45,
+        "source_url": "https://ladysmithyc.bc.ca/reciprocals",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4639,
+          48.8597
+        ]
+      },
+      "properties": {
+        "name": "Long Harbour",
+        "club": "RVYC",
+        "relationship": "outstation",
+        "moorage": "dock, mooring_buoys, anchoring",
+        "max_loa_ft": 55,
+        "source_url": "https://rvyc.bc.ca/On_the_Water/Outstations",
+        "marker-color": "#1f78b4",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.6042,
+          48.8018
+        ]
+      },
+      "properties": {
+        "name": "Maple Bay Yacht Club",
+        "club": "MBYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 50,
+        "free_nights": 2,
+        "source_url": "https://mbyc.bc.ca/visitors/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.9426,
+          49.1771
+        ]
+      },
+      "properties": {
+        "name": "Nanaimo Yacht Club",
+        "club": "NYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 60,
+        "free_nights": 2,
+        "source_url": "https://www.nanaimoyc.ca/reciprocal-clubs",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6325,
+          48.2879
+        ]
+      },
+      "properties": {
+        "name": "Oak Harbor Yacht Club",
+        "club": "OHYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 42,
+        "source_url": "https://ohyc.org/reciprocals/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9598,
+          48.6323
+        ]
+      },
+      "properties": {
+        "name": "Orcas Island Yacht Club",
+        "club": "OIYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 200,
+        "free_nights": 2,
+        "source_url": "https://oiyc.org/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.064,
+          48.979
+        ]
+      },
+      "properties": {
+        "name": "Point Roberts Yacht Club",
+        "club": "PRYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 2,
+        "source_url": "https://www.pointrobertsyachtclub.com/visitors-to-pryc.html",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4566,
+          48.1277
+        ]
+      },
+      "properties": {
+        "name": "Port Angeles Yacht Club",
+        "club": "PAYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 2,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6837,
+          47.9237
+        ]
+      },
+      "properties": {
+        "name": "Port Ludlow Yacht Club",
+        "club": "PLYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 2,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5356,
+          47.6954
+        ]
+      },
+      "properties": {
+        "name": "Port Madison Yacht Club",
+        "club": "PMYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.7731,
+          48.1083
+        ]
+      },
+      "properties": {
+        "name": "Port Townsend Yacht Club",
+        "club": "PTYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6425,
+          47.7275
+        ]
+      },
+      "properties": {
+        "name": "Poulsbo Yacht Club",
+        "club": "PYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3164,
+          47.6435
+        ]
+      },
+      "properties": {
+        "name": "Queen City Yacht Club",
+        "club": "QCYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1411,
+          49.1814
+        ]
+      },
+      "properties": {
+        "name": "Richmond Yacht Club",
+        "club": "RICYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 50,
+        "free_nights": 3,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6658,
+          47.5877
+        ]
+      },
+      "properties": {
+        "name": "Roche Harbor Yacht Club",
+        "club": "RHYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 60,
+        "source_url": "https://rhyc.clubexpress.com/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1878,
+          49.2728
+        ]
+      },
+      "properties": {
+        "name": "Royal Vancouver Yacht Club",
+        "club": "RVANYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 0,
+        "source_url": "https://www.royalvan.com/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4905,
+          48.8444
+        ]
+      },
+      "properties": {
+        "name": "Saltspring Island Sailing Club",
+        "club": "SISC",
+        "relationship": "reciprocal",
+        "moorage": "dock, anchoring",
+        "source_url": "https://www.saltspringsailing.ca/reciprocal-moorage/sisc-visitor-moorage/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.0177,
+          48.5369
+        ]
+      },
+      "properties": {
+        "name": "San Juan Island Yacht Club",
+        "club": "SJIYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 85,
+        "source_url": "https://sjiyc.com/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.1358,
+          49.2855
+        ]
+      },
+      "properties": {
+        "name": "Schooner Cove Yacht Club",
+        "club": "SCYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 150,
+        "source_url": "https://scyc.ca/reciprocal-yacht-clubs-and-cruising-stations/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3085,
+          47.6453
+        ]
+      },
+      "properties": {
+        "name": "Seattle Yacht Club",
+        "club": "SEAYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 2,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.7721,
+          48.9884
+        ]
+      },
+      "properties": {
+        "name": "Semiahmoo Yacht Club",
+        "club": "SEMYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 50,
+        "free_nights": 2,
+        "source_url": "https://www.semiahmooyachtclub.org/reciprocal/reciprocal-visitor-information/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.0407,
+          48.0621
+        ]
+      },
+      "properties": {
+        "name": "Sequim Bay Yacht Club",
+        "club": "SQYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 1,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.507,
+          48.392
+        ]
+      },
+      "properties": {
+        "name": "Shelter Bay Yacht Club",
+        "club": "SHBYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.4163,
+          48.6756
+        ]
+      },
+      "properties": {
+        "name": "Sidney North Saanich Yacht Club",
+        "club": "SNSYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 70,
+        "free_nights": 0,
+        "source_url": "https://snsyc.ca/Visitors",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.6991,
+          49.1496
+        ]
+      },
+      "properties": {
+        "name": "Silva Bay Yacht Club",
+        "club": "SBYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "max_loa_ft": 40,
+        "source_url": "https://silvabayyachtclub.com/reciprocals/reciprocal-visitor-information/",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4959,
+          48.3953
+        ]
+      },
+      "properties": {
+        "name": "Swinomish Yacht Club",
+        "club": "SWYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "source_url": "https://www.cruisesyc.com/reciprocalmoorage.html",
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.6703,
+          48.9825
+        ]
+      },
+      "properties": {
+        "name": "Telegraph Harbour",
+        "club": "RVYC",
+        "relationship": "outstation",
+        "moorage": "dock",
+        "source_url": "https://rvyc.bc.ca/On_the_Water/Outstations",
+        "marker-color": "#1f78b4",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.1343,
+          49.2966
+        ]
+      },
+      "properties": {
+        "name": "Vancouver Rowing Club",
+        "club": "VRC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 2,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.2732,
+          49.3565
+        ]
+      },
+      "properties": {
+        "name": "West Vancouver Yacht Club",
+        "club": "WVYC",
+        "relationship": "reciprocal",
+        "moorage": "dock",
+        "free_nights": 2,
+        "marker-color": "#33a02c",
+        "marker-size": "medium"
+      }
+    }
+  ]
+}
