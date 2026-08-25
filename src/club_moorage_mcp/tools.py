@@ -145,6 +145,8 @@ def check_availability(store: Store, name: str, date: str, provider=None) -> dic
 def _not_ranked_reason(m: Moorage) -> str:
     if "anchoring" in m.moorage or "mooring_buoys" in m.moorage:
         return "no overnight-comfort assessment authored for this moorage"
+    if not m.moorage:
+        return "moorage type not recorded for this club — confirm with the club"
     return "dock moorage — not an anchoring/comfort decision"
 
 

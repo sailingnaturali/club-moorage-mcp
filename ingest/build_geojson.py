@@ -28,10 +28,12 @@ def build() -> dict:
             "name": m.name,
             "club": m.club,
             "relationship": rel,
+            "locale": m.locale or m.island,
             "moorage": ", ".join(m.moorage) or None,
             "max_loa_ft": m.max_loa_ft,
             "free_nights": m.free_nights,
             "source_url": m.source_url,
+            "confidence": m.confidence,   # 'low' == listed by RVYC, terms not researched
             "marker-color": COLORS.get(rel, "#888888"),
             "marker-size": "medium",
         }

@@ -9,9 +9,15 @@ a `relationship`:
   Telegraph Harbour).
 - **`reciprocal`** — a partner club that hosts visiting RVYC members as guests, with its own
   visitor terms (free nights, fees, max stay, insurance minimum). Ships bundled with the
-  BC + Washington coastal set (45 clubs): South Vancouver Island, the Gulf Islands, the
-  Vancouver-side crossing stops, the San Juans / Anacortes / Bellingham, and the Strait of
-  Juan de Fuca / North Puget Sound.
+  **whole RVYC reciprocal list — 137 clubs, worldwide**, in two depths:
+  - **Researched** (`confidence` med/high, 45 clubs) — the BC + Washington coastal set the
+    boat actually cruises: South Vancouver Island, the Gulf Islands, the Vancouver-side
+    crossing stops, the San Juans / Anacortes / Bellingham, the Strait of Juan de Fuca /
+    North Puget Sound. Per-club terms, fees, size limits and Vaan fit.
+  - **Listed only** (`confidence: low`, 92 clubs) — everything else on the list: California,
+    Hawaii, Mexico, Bermuda, the Caribbean, eastern Canada, the UK, Australia/NZ and the
+    rest. Position, address, phone and website only, so a passage plan can ask "whose club
+    is in this port?" — guest-moorage terms are **not** researched and every record says so.
 
 ## Tools
 
@@ -54,8 +60,9 @@ change with `uv run python ingest/build_geojson.py`; `--check` fails on drift, a
 
 Reciprocal records are generated from `ingest/reciprocals.yaml` — edit the YAML, then
 `uv run python ingest/build_records.py`. The three RVYC outstations are hand-authored.
-Per-club reciprocal terms were researched from secondary sources; **verify fees, LOA, and
-availability with the club before arrival.**
+The club list is the RVYC 2024 Annual; positions and contacts are RVYC's own reciprocal
+map. Per-club terms were researched from secondary sources where they exist at all;
+**verify fees, LOA, and availability with the club before arrival.**
 
 ## Install
 

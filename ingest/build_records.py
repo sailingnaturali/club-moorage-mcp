@@ -24,7 +24,7 @@ OUT = HERE.parent / "src" / "club_moorage_mcp" / "data" / "reciprocals"
 # mirrors the club_moorage_mcp.models.Moorage schema.
 ORDER = [
     "name", "club", "relationship", "lat", "lon", "coords_approx",
-    "region", "locale", "country", "source_url",
+    "region", "locale", "country", "address", "source_url",
     "available", "moorage", "max_loa_ft", "loa_note", "raft_max",
     "power", "water", "vhf", "phone",
     "booking", "reservation_required",

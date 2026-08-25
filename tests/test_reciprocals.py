@@ -22,7 +22,7 @@ def test_relationship_filter_separates_owned_from_reciprocal():
     owned = list_moorage(s, relationship="outstation")["moorage"]
     recip = list_moorage(s, relationship="reciprocal")["moorage"]
     assert {o["name"] for o in owned} == {"Friday Harbor", "Long Harbour", "Telegraph Harbour"}
-    assert len(recip) == 44        # 45 loaded, minus discontinued Deep Bay (available: false)
+    assert len(recip) == 136       # 137 loaded, minus discontinued Deep Bay (available: false)
     assert all(o["relationship"] == "reciprocal" for o in recip)
 
 

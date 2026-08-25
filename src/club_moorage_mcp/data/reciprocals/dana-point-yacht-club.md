@@ -1,0 +1,19 @@
+---
+name: Dana Point Yacht Club
+club: DPYC
+relationship: reciprocal
+lat: 33.460653
+lon: -117.704359
+region: California
+locale: Dana Point, CA
+country: US
+address: 24399 Dana Dr, Dana Point, CA 92629
+source_url: https://www.dpyc.org
+available: true
+phone: +1 949-496-2900
+confidence: low
+flags:
+- Listed in the RVYC 2024 Annual; visitor moorage terms not researched — call ahead
+last_updated: '2026-08-25'
+---
+Offshore reciprocal club on RVYC's reciprocal-privileges list. Position and contact come from RVYC's own reciprocal map; guest-moorage availability, size limits and fees are unresearched — contact the club before planning a stop.

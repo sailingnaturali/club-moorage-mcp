@@ -170,3 +170,14 @@ def test_rank_moorage_full_outstation_still_listed_and_flagged():
     entries = out["ranked"] + out["not_ranked"]
     lh = next(e for e in entries if e["name"] == "Long Harbour")
     assert lh["availability"]["fully_booked"] is True
+
+
+def test_unresearched_club_is_not_called_dock_only():
+    # A club we only have a position for must not be reported as "dock moorage" — we don't know.
+    from club_moorage_mcp.store import Store
+    s = Store.load()
+    out = rank_moorage(s, names=["St. Francis Yacht Club"], forecast=[])
+    assert out["not_ranked"] == [
+        {"name": "St. Francis Yacht Club",
+         "reason": "moorage type not recorded for this club — confirm with the club"}
+    ]

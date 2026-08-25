@@ -13,12 +13,30 @@ def test_bundled_data_has_three_rvyc_outstations():
 def test_bundled_data_includes_reciprocal_clubs():
     s = Store.load()
     reciprocals = [o for o in s.records if o.relationship == "reciprocal"]
-    assert len(reciprocals) == 45                          # BC+WA: charter core + crossing/Strait tranche
+    assert len(reciprocals) == 137                         # the full RVYC 2024 Annual list
     nanaimo = s.get("Nanaimo Yacht Club")
     assert nanaimo.relationship == "reciprocal"
     assert nanaimo.club == "NYC"                            # the partner club's own code, not RVYC
     assert nanaimo.free_nights == 2
     assert nanaimo.fits_vaan is True
+
+
+def test_reciprocals_cover_the_route_home_not_just_the_pnw():
+    # The list is worldwide — the delivery route home passes several of these.
+    s = Store.load()
+    by_region = {o.region for o in s.records if o.relationship == "reciprocal"}
+    assert {"California", "Hawaii", "Mexico", "Bermuda", "Caribbean"} <= by_region
+    assert s.get("San Diego Yacht Club").country == "US"
+    assert s.get("Club de Yates de Acapulco").country == "MX"
+
+
+def test_every_reciprocal_is_mappable_and_uniquely_coded():
+    # No coords = invisible to find_moorage_near and to moorage.geojson; a duplicate club
+    # code would make a clubs=[...] filter sweep in someone else's club.
+    s = Store.load()
+    assert [o.name for o in s.records if o.lat is None or o.lon is None] == []
+    codes = [o.club for o in s.records if o.relationship == "reciprocal"]
+    assert len(codes) == len(set(codes))
 
 
 def test_long_harbour_is_overnight_capable():
